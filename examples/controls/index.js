@@ -1,6 +1,7 @@
+// uncomponent - no imports - no external dependencies!
 
-
-const reducer = (state, action) => state + action
+const reducer = (state, action) => 
+	state + action
 
 // pure with no dependencies
 const view = ({ button }) => dispatch => state => {
@@ -22,42 +23,26 @@ const view = ({ button }) => dispatch => state => {
 }
 
 
-// no dependencies
-const createMount = ({ createStream, createElements, render }) => 
-	({ e, reducer, view, initState}) => {
-
-		const actions = createStream()
-
-		createStream
-		.scan(reducer, initState, actions)
-
-		// pipe into view
-		// view events wil update the actionStream
-		.map(view(createElements)(actions))
-
-		// render to DOM
-		.map(vnode => render(e, vnode))
-
-		return actions
-	}
-
-
-// configure mount
-const m = require('mithril')
+// configure mount - imports only now
+const createElement = require('mithril')
+const createMount = require('../../')
 const mount = createMount({	
 	createStream: require("mithril/stream"), 
-	createElements: require('hyperscript-helpers')(m), 
-	render: m.render 
+	createElements: require('hyperscript-helpers')(createElement), 
+	// createRender: e => vnode => m.render(e, vnode) 
+	createRender: e => vnode => createElement.render(e, vnode)
 })
 
 // create dom element
 const e = document.createElement('div')
 document.body.appendChild(e)
 
-// mount our live component get back stream of actions
+// mount our live uncomponent and get back its writeable stream of actions
 const actions = mount({ e, reducer, view, initState: 0 })
 
-// --- now pipe periodic actions
+
+
+// --- Some more action - generate periodic actions
 
 const delayedConstant = (val, delay) => stream => {
 	setInterval(() => stream(val), delay)
