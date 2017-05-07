@@ -2,7 +2,7 @@
   "version": "0.1.0",
   "name": "un",
   "main": "index.js",
-  "description": "un: Unframework for Universal Uncomponents",
+  "description": "un: unframework for universal uncomponents",
   "repository": {
     "type": "git",
     "url": "https://github.com/dmitriz"
