@@ -2,6 +2,7 @@ const elm = document.createElement('div')
 document.body.appendChild(elm)
 
 var { curryN } = require('ramda')
+
 var m = require('mithril')
 var { div, button, input } = require('hyperscript-helpers')(m)
 
@@ -27,32 +28,29 @@ const view = dispatch => state => [
 ]
 
 // Drivers
-const render = curryN(2, m.render)
 
-const runApp = elm => ({reducer, view}, initState) => actionStream => 
-	// iterate over actions
+const mount = (elm, { reducer, view }, initState) => {
+	const actions = Stream(0)
+
+	// runApp(elm)({reducer, view}, initState)(actions)
 	Stream
-	.scan(reducer, initState, actionStream)
+	.scan(reducer, initState, actions)
 
 	// pipe into view
 	// view events wil update the actionStream
-	.map(view(actionStream))
+	.map(view(actions))
 
 	// render to DOM
-	.map(render(elm))
+	.map(vnode => m.render(elm, vnode))
 
-
-const mount = (elm, {reducer, view}, initState) => {
-	const actions = Stream(0)
-	runApp(elm)({reducer, view}, initState)(actions)
-	return {actions: actions}
+	return { actions }
 }
 
 
 const initState = 0
 
 // mount live view and get back stream of actions
-const { actions } = mount(elm, {reducer, view}, initState)
+const { actions } = mount(elm, { reducer, view }, initState)
 
 // --- now pipe periodic actions
 
