@@ -1,0 +1,5 @@
+{
+	"scripts": {
+		"start": "budo index.js:build.js --live --open"
+	}
+}

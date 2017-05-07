@@ -1,0 +1,10 @@
+{
+	"scripts": {
+		"start": "budo index.js:build.js --live --open"
+	},
+  "dependencies": {
+    "flyd": "^0.2.4",
+    "hyperscript-helpers": "^3.0.3",
+    "mithril": "^1.1.1"
+  }
+}
