@@ -23,14 +23,26 @@ const view = ({ button }) => dispatch => state => {
 }
 
 
-// configure mount - imports only now
-const createElement = require('mithril')
+// the only basic method you need to import
 const createMount = require('../../')
+
+// or React.createElement
+
 const mount = createMount({	
-	createStream: require("mithril/stream"), 
-	createElements: require('hyperscript-helpers')(createElement), 
-	// createRender: e => vnode => m.render(e, vnode) 
-	createRender: e => vnode => createElement.render(e, vnode)
+
+	// your favorite stream factory
+	// TODO: flyd, most, xstream
+	createStream: require("mithril/stream"),
+
+	// your favorite element creator
+	// TODO: (React|Preact|Inferno).createElement, snabbdom/h, hyperscript
+	createElement: require('mithril'),
+
+	// your favorite create tags helpers
+	createTags: require('hyperscript-helpers'),
+
+	// TODO: (React|Preact|Inferno).render, snabbdom-patch, replaceWith
+	createRender: element => vnode => require('mithril').render(element, vnode)
 })
 
 // create dom element

@@ -1,11 +1,20 @@
-const createMount = ({ 
-	createStream, createElements, createRender 
+// main factory - no external dependencies
+
+const createMount = ({
+
+	// configuration object
+	createStream, createElement, createTags, createRender
+
 }) => ({
+
+	// component object
  	e, reducer, view, initState
+
 }) => {
 
 	const actions = createStream()
-	// const render = e => vnode => createRender(e, vnode)
+
+	const createElements = createTags(createElement)
 
 	createStream
 	.scan(reducer, initState, actions)
