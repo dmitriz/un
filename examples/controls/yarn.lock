@@ -41,3 +41,7 @@ ramda@^0.19.1:
 symbol-observable@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.0.4.tgz#29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d"
+
+un.js@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.1.4.tgz#836281b904047bd853259c375b15aad9d8cf6bdf"

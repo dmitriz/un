@@ -24,7 +24,8 @@ const view = ({ button }) => dispatch => state => {
 
 
 // the only basic method you need to import
-const createMount = require('../../')
+// const createMount = require('../../')
+const createMount = require('un.js')
 
 // or React.createElement
 
