@@ -11,20 +11,23 @@ var Stream = require("mithril/stream")
 const reducer = (state, action) => state + action
 
 
-const change = dispatch => amount => 
-	button( 
-		{onclick: () => dispatch(amount)}, 
-		(amount > 0) 
-			? `+${amount}` 
-			: `-${-amount}`
-		)
+const view = ({ button }) => dispatch => state => {
 
-const view = dispatch => state => [	
-	div(`Increasing by 5 every second: ${state}`),
-	change(dispatch)(10),
-	` `,
-	change(dispatch)(-10)
-]
+	const change = amount => 
+		button( 
+			{onclick: () => dispatch(amount)}, 
+			(amount > 0) 
+				? `+${amount}` 
+				: `-${-amount}`
+			)
+
+	return [	
+		`Increasing by 5 every second: `,
+		change(10),
+		` ${state} `,
+		change(-10)
+	]
+}
 
 
 // Drivers
@@ -49,7 +52,7 @@ const mount = (elm, { reducer, view }, initState) => {
 const initState = 0
 
 // mount live view and get back stream of actions
-const actions = mount(elm, { reducer, view }, initState)
+const actions = mount(elm, { reducer, view: view({ button }) }, initState)
 
 // --- now pipe periodic actions
 
