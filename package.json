@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "name": "un",
+  "main": "index.js",
+  "description": "un: Unframework for Universal Uncomponents",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmitriz"
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "budo index.js:build.js --live --open",
+    "wdev": "open http://localhost:8080/ && webpack-dev-server",
+    "pub": "npm version patch && npm publish && git push",
+    "sync": "git ac && git pull --rebase && git push",
+    "test": "karma start",
+  },
+  "keywords": [],
+  "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
+  "license": "MIT"
+}
