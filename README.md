@@ -13,6 +13,7 @@ EXPERIMENTAL: in development, contributions welcome!
 - No extension of proprietary component classes (Backbone, React, ...)
 - No lock-ins, use your uncomponents with any framework or without any
 
+
 ## Why unframework?
 
 - Frameworks try to provide and cater for everything, `un` tries the opposite - give you the maximal possible freedom.
@@ -24,14 +25,87 @@ EXPERIMENTAL: in development, contributions welcome!
 - Frameworks often like you to inherit from their proprietary classes, `un` tries to help you embrace the pure functional style and minimise use of classes and `this`. However, this is merely suggestive. Giving you maximum freedom and staying out of your way is a higher priority for `un`.
 
 
-## If nothing is provided, then what do I needed?
+## What is provided?
+
+Currently a single tiny factory function called `createMount`. [See here the complete code.](https://github.com/dmitriz/un/blob/master/index.js) Its role is similar to `React.render`, in which you would typically see it in only few places. 
+
+Here is a usage example. Instead of learning new API, new framework or long set of methods your simply import your favorite familiar libraries that you are already using anyway:
+
 
 ```js
-createStream, 
-createElement, 
-createTags, 
-createRender
+const mount = createMount({	
+
+	// your favorite stream factory
+	// mithril/stream, TODO: flyd, most, xstream
+	createStream: require("mithril/stream"),
+
+	// your favorite element creator
+	// mitrhil, TODO: (React|Preact|Inferno).createElement, snabbdom/h, hyperscript
+	createElement: require('mithril'),
+
+	// your favorite create tags helpers (optional)
+	createTags: require('hyperscript-helpers'),
+
+	// mithril.render, TODO: (React|Preact|Inferno).render, snabbdom-patch, replaceWith
+	createRender: element => vnode => require('mithril').render(element, vnode)
+})
 ```
+
+So instead of having external dependencies, `un` simply lets you provide those libraries and return the `mount` function, the only function from `un` that you need. The role of the `mount` is similar (and inspired by) [`Mithril` `m.mount`](https://mithril.js.org/mount.html) or `React.render` with auto-redrawing facility. The key idea is, attaching a live component to an element should be as simple as calling a function and `mount` does exactly that:
+
+
+```js
+// mount our live uncomponent and get back its writeable stream of actions
+const actions = mount({ element, reducer, view, initState})
+```
+
+So we call `mount` with 4 basic properties:
+
+- `element`: HTML element, where we attaching our uncomponent, similar to `React.render` the element's content will be overwritten
+
+- `reducer`: Redux style reducer from our model logic
+
+- `view`: Plain pure function taking `dispatcher` and `state` and returning new `state`, the state can be global, narrowed down, or completely local to the uncomponent, to cater for the [fractal architecture](https://staltz.com/unidirectional-user-interface-architectures.html). The view function dispatches actions just like in Redux and returns a virtual or real DOM element, depending on the library used in configuring the `mount`. But to be completely pure with no external dependency, the `view` must include the element creator factory as one of its parameters:
+
+```js
+const view = h => dispatch => state => 
+	h('div', `Hello World, your ${state} is wonderful!`)
+```
+
+where `h` stands for our favorite element creator passed to `createMount`. We find the [`hyperscript`](https://github.com/hyperhype/hyperscript) API supported by many libraries (e.g. Mithril, Snabbdom, or [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript)) most convenient, but also using JSX should be possible at it is equivalent to the `React.createElement` calls.
+
+Or use the `createTags` helpers (like [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers)) that you can conveniently destructure inside the view:
+
+```js
+const view = ({ div }) => dispatch => state => 
+	div(`Hello World, your ${state} is wonderful!`)
+```
+
+The other two parameters of the `view` are `dispatch` and `state` that have to match the type of the `action` and the `state` parameters of the `reducer`. The state, updated by the reducer, will be passed directly to the view (from the same `mount` call). And every action value used to call the `dispatch` function, will be passed directly as action to the `reducer`. For example, calling `dispatch('foo')` in the event handler inside the `view` will result in `foo` being passed as `action` to the `reducer`.
+
+This style of writing was inspired by https://github.com/ericelliott/react-pure-component-starter and https://medium.com/javascript-scene/baby-s-first-reaction-2103348eccdd
+
+In `React` the role of the `view` would be played by the component `render` method, but we already have another static method `React.render`, so we prefer to call it the `view` as in Mithril. 
+
+
+- `initState`: The state to initialise our uncomponent.
+
+Why "uncomponent"? Because there isn't really much of a "component", the `reducer` and the `view` are just two plain functions and the initial state is a plain object.
+
+
+## Streams
+
+Streams are in the core of `un`. [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by Andre Staltz is a great introduction to streams. [`flyd`](https://github.com/paldepind/flyd) is a great minimal but powerful stream library to use, including great examples to see the streams in action. The [Mithril stream library](https://mithril.js.org/stream.html) is even smaller but suffices to let `un` do its job. Note that some libraries, such as [`most`](https://github.com/cujojs/most) distingiush between "pending" and "active" streams, but to make things as simple as possible, all streams in `un` are always active, readable and writeable. 
+
+Despite of their initial complexity, streams model very well the asyncronous processes such as user acton flow, and consequently help to greatly simplify the architecture. The state values are stored directly inside the stream, so no stores such as in Redux are needed.
+
+Instead of letting the framework do some "magic" behind the scene, when updating the DOM, with `un`, your view listens to its state stream. Whenever the state changes, its new value is passed to any subscriber, or which the view is one. The view function is pure with no side-effects, so all it does is pass the new updated element to the rendering library you provided to
+to `createMount`. It is then the library's responsibility to create the side-effect updating the DOM.
+
+Note that you can absolutely ignore the stream part and write your code without seeing a single stream. Like in Redux, every action passed to dispatcher will go through the cycle. However, using streams can give you additional control. The `mount` method returns the action stream that is both readable and writeable. That means, you can attach other subscribers to your actions, or you can actively pipe new values into it, causing the same or additional actions passed to the reducer and subsequently updating the DOM.
+
+
+A basic example below is demonstrating how the action stream can be externally driven in addition to user actions.
 
 
 ## Basic example
@@ -39,7 +113,8 @@ createRender
 
 ### Pure reducer function
 
-Write your pure reducer just like in [Redux](http://redux.js.org/) 
+Our both state and action values are just numbers 
+and the reducer simply adds the action value to the state:
 
 ```js
 const reducer = (state, action) => 
@@ -47,6 +122,9 @@ const reducer = (state, action) =>
 ```
 
 ### Pure view function
+
+Our view function example here demonstrates how a function helper inside
+can reuse all the arguments of the outside function:
 
 ```js
 const view = ({ button }) => dispatch => state => {
@@ -67,6 +145,15 @@ const view = ({ button }) => dispatch => state => {
 	]
 }
 ```
+
+Here we attach to the `onclick` listener (following `Mithril`s API flavour)
+the anonymous function passing the `amount` to the `dispatch`. 
+As mentioned above, that value is passed as action to the reducer.
+
+Behind the scene, every time the user clicks that button,
+the `amount` value is written into the `action` stream.
+That is essentially what the `dispatch` function does.
+
 
 ### Drivers
 
