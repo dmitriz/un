@@ -13,24 +13,26 @@ const reducer = (state, action) => state + action
 
 const change = dispatch => amount => 
 	button( 
-		{onclick: _ => dispatch(amount)},
-		`Change by ${amount}`
+		{onclick: () => dispatch(amount)},
+		(amount > 0) 
+			? `+${amount}` 
+			: `-${-amount}`
 	)
 
 const view = dispatch => state => [
 	div(`Increasing by 5 every second: ${state}`),
-	change(dispatch)(-10),
+	change(dispatch)(10),
 	` `,
-	change(dispatch)(+10),
+	change(dispatch)(-10),
 ]
 
 // Drivers
 const render = curryN(2, m.render)
 
-const runApp = elm => ({reducer, view}) => actionStream => 
+const runApp = elm => ({reducer, view}, initState) => actionStream => 
 	// iterate over actions
 	Stream
-	.scan(reducer, actionStream(), actionStream)
+	.scan(reducer, initState, actionStream)
 
 	// pipe into view
 	// view events wil update the actionStream
@@ -39,15 +41,25 @@ const runApp = elm => ({reducer, view}) => actionStream =>
 	// render to DOM
 	.map(render(elm))
 
-actionStream = Stream(0)
 
-runApp(elm)({reducer, view})(actionStream)
+const mount = (elm, {reducer, view}, initState) => {
+	const actions = Stream(0)
+	runApp(elm)({reducer, view}, initState)(actions)
+	return {actions: actions}
+}
 
+
+const initState = 0
+
+// mount live view and get back stream of actions
+const { actions } = mount(elm, {reducer, view}, initState)
+
+// --- now pipe periodic actions
 
 const delayedConstant = (val, delay) => stream => {
 	setInterval(() => stream(val), delay)
 	return stream
 }
+delayedConstant(5, 1000)(actions)
 
-// pipe constant 3 into our main actionStream
-delayedConstant(5, 1000)(actionStream)
+
