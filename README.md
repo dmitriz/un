@@ -24,13 +24,13 @@ EXPERIMENTAL: in development, contributions welcome!
 - Frameworks often like you to inherit from their proprietary classes, `un` tries to help you embrace the pure functional style and minimise use of classes and `this`. However, this is merely suggestive. Giving you maximum freedom and staying out of your way is a higher priority for `un`.
 
 
-## If nothing is provided, then what is needed?
+## If nothing is provided, then what do I needed?
 
 ```js
-	createStream, 
-	createElement, 
-	createTags, 
-	createRender
+createStream, 
+createElement, 
+createTags, 
+createRender
 ```
 
 
