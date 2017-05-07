@@ -4,35 +4,34 @@ document.body.appendChild(elm)
 var { curryN } = require('ramda')
 
 var m = require('mithril')
-var { div, button, input } = require('hyperscript-helpers')(m)
+var { div, button, input } = hh = require('hyperscript-helpers')(m)
 
 var Stream = require("mithril/stream")
 
-var show = s => console.log(s), s
-
 const reducer = (state, action) => state + action
+
 
 const change = dispatch => amount => 
 	button( 
-		{onclick: () => dispatch(amount)},
+		{onclick: () => dispatch(amount)}, 
 		(amount > 0) 
 			? `+${amount}` 
 			: `-${-amount}`
-	)
+		)
 
-const view = dispatch => state => [
+const view = dispatch => state => [	
 	div(`Increasing by 5 every second: ${state}`),
 	change(dispatch)(10),
 	` `,
-	change(dispatch)(-10),
+	change(dispatch)(-10)
 ]
+
 
 // Drivers
 
 const mount = (elm, { reducer, view }, initState) => {
-	const actions = Stream(0)
+	const actions = Stream()
 
-	// runApp(elm)({reducer, view}, initState)(actions)
 	Stream
 	.scan(reducer, initState, actions)
 
@@ -43,14 +42,14 @@ const mount = (elm, { reducer, view }, initState) => {
 	// render to DOM
 	.map(vnode => m.render(elm, vnode))
 
-	return { actions }
+	return actions
 }
 
 
 const initState = 0
 
 // mount live view and get back stream of actions
-const { actions } = mount(elm, { reducer, view }, initState)
+const actions = mount(elm, { reducer, view }, initState)
 
 // --- now pipe periodic actions
 
