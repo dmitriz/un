@@ -8,9 +8,8 @@
   },
   "scripts": {
     "start": "npm run dev",
-    "dev": "budo index.js:build.js --live --open",
-    "wdev": "open http://localhost:8080/ && webpack-dev-server",
-    "test": "karma start"
+    "open": "open index.html",
+    "dev": "budo index.js:build.js --live --open"
   },
   "keywords": [],
   "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
