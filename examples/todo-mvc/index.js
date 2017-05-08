@@ -70,10 +70,10 @@ var Todos = {
 			e.target.value = ""
 		}
 	},
-	toggleAll: () =>
-		state.dispatch("setStatuses", [
-			document.getElementById("toggle-all").checked
-		]),
+	toggleAll: () => {
+		var toggleAllEl = document.getElementById("toggle-all")
+		return state.dispatch("setStatuses", [toggleAllEl.checked])
+	},
 	toggle: todo => state.dispatch("setStatus", [todo, !todo.completed]),
 	focus: function(vnode, todo) {
 		if (todo === state.editing && vnode.dom !== document.activeElement) {
