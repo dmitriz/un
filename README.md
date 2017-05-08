@@ -199,7 +199,11 @@ by the same author.
 
 [Professor Frisby Introduces Composable Functional JavaScript](https://egghead.io/lessons/javascript-refactoring-imperative-code-to-a-single-composed-expression-using-box)
 
-[The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by Andre Staltz, as well as [many other of his always enlightening posts](https://staltz.com/blog.html) and surely the [`CycleJS` project](https://cycle.js.org/)
+[The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by Andre Staltz, as well as [many other of his always enlightening posts](https://staltz.com/blog.html) and surely the [CycleJS project](https://cycle.js.org/)
+
+The [Redux](http://redux.js.org/) and [Elm](https://guide.elm-lang.org/architecture/) projects
+
+The [Ramda](http://ramdajs.com/) project and its sister [Fantasy Land](https://github.com/fantasyland/fantasy-land) and [Sanctuary](https://github.com/sanctuary-js/sanctuary) projects
 
 [Functional Frontend Architecture](https://github.com/paldepind/functional-frontend-architecture)
 
@@ -208,8 +212,6 @@ by the same author.
 [Meiosis](https://github.com/foxdonut/meiosis)
 
 [Mithril's architecture](https://mithril.js.org/index.html)
-
-[Redux](http://redux.js.org/)
 
 The [simple but powerful `flyd` stream library](https://github.com/paldepind/flyd)
 
