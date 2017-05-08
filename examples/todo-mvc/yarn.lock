@@ -14,6 +14,9 @@ mithril@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.1.tgz#0c98644c90503eec2187f66a851ba4053c4a5d66"
 
-un.js@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.1.4.tgz#836281b904047bd853259c375b15aad9d8cf6bdf"
+un.js@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.2.1.tgz#52b7e539cf50fa1040b64d8632ad1b256339435f"
+  dependencies:
+    hyperscript-helpers "^3.0.3"
+    mithril-stream "^1.0.0"
