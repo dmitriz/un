@@ -128,7 +128,7 @@ Our view function example here demonstrates how a function helper inside
 can reuse all the arguments of the outside function:
 
 ```js
-const view = ({ button }) => dispatch => state => {
+const view = ({ button }) => (state, dispatch) => {
 
 	const change = amount => 
 		button( 
@@ -159,8 +159,7 @@ That is essentially what the `dispatch` function does.
 ### Drivers
 
 ```js
-// the only basic method you need to import
-// const createMount = require('../../')
+// the only method you ever use from 'un'
 const createMount = require('un.js')
 
 // or React.createElement
@@ -191,6 +190,29 @@ const actions = mount({ e, reducer, view, initState: 0 })
 ```
 
 
-## Inspirations
+## Inspirations (in random order)
 
+[@sindresorhus on reusable modules](https://github.com/sindresorhus/ama/issues/10#issuecomment-117766328)
+
+<a href="https://drboolean.gitbooks.io/mostly-adequate-guide/content/">Professor Frisby's Mostly Adequate Guide to Functional Programming</a>
+by the same author.
+
+[Professor Frisby Introduces Composable Functional JavaScript](https://egghead.io/lessons/javascript-refactoring-imperative-code-to-a-single-composed-expression-using-box)
+
+[The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by Andre Staltz, as well as [many other of his always enlightening posts](https://staltz.com/blog.html) and surely the [`CycleJS` project](https://cycle.js.org/)
+
+[Functional Frontend Architecture](https://github.com/paldepind/functional-frontend-architecture)
+
+[TodoMVC example built with `most.js`](https://github.com/briancavalier/most-todomvc)
+
+[Meiosis](https://github.com/foxdonut/meiosis)
+
+[Mithril's architecture](https://mithril.js.org/index.html)
+
+[Redux](http://redux.js.org/)
+
+The [simple but powerful `flyd` stream library](https://github.com/paldepind/flyd)
+
+
+To be extended...
 
