@@ -197,7 +197,7 @@ by the same author.
 
 [Professor Frisby Introduces Composable Functional JavaScript](https://egghead.io/lessons/javascript-refactoring-imperative-code-to-a-single-composed-expression-using-box)
 
-[The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by Andre Staltz, as well as [many other of his always enlightening posts](https://staltz.com/blog.html) and surely the [CycleJS project](https://cycle.js.org/)
+[The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by Andre Staltz, as well as [many other of his always enlightening posts](https://staltz.com/blog.html) as well as his [CycleJS project](https://cycle.js.org/)
 
 [@sindresorhus on reusable modules](https://github.com/sindresorhus/ama/issues/10#issuecomment-117766328)
 
