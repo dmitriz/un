@@ -8,7 +8,7 @@ const createMount = ({
 }) => ({
 
 	// component object
- 	e, reducer, view, initState
+ 	el, reducer, view, initState
 
 // defaults
 } = {
@@ -29,7 +29,7 @@ const createMount = ({
 	.map(view(createElements)(actions))
 
 	// render to DOM
-	.map(vnode => createRender(e)(vnode))
+	.map(vnode => createRender(el)(vnode))
 
 	return actions
 }

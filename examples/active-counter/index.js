@@ -46,11 +46,11 @@ const mount = createMount({
 })
 
 // create dom element
-const e = document.createElement('div')
-document.body.appendChild(e)
+const el = document.createElement('div')
+document.body.appendChild(el)
 
 // mount our live uncomponent and get back its writeable stream of actions
-const actions = mount({ e, reducer, view, initState: 0 })
+const actions = mount({ el, reducer, view, initState: 0 })
 
 
 

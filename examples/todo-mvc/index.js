@@ -64,7 +64,7 @@ var state = {
 
 //view
 var Todos = {
-	add: function(e) {
+	add: e => {
 		if (e.keyCode === 13 && e.target.value) {
 			state.dispatch("createTodo", [e.target.value])
 			e.target.value = ""
@@ -98,12 +98,12 @@ var Todos = {
 				m("input#new-todo", {
 					placeholder: 'What needs to be done?',
 					autofocus: true, 
-					onkeypress: dispatch.add
+					onkeypress: dispatch
 				})
 			])
 
 		return [
-			NewTodoInput(m)(ui),
+			NewTodoInput(m)(ui.add),
 			m("section#main", {
 				style: {display: state.todos.length > 0 ? "" : "none"}
 			}, [
