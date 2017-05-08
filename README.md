@@ -81,7 +81,7 @@ const view = ({ div }) => (state, dispatch) =>
 	div(`Hello World, your ${state} is wonderful!`)
 ```
 
-The other two parameters of the `view` are `dispatch` and `state` that have to match the type of the `action` and the `state` parameters of the `reducer`. (Note how the `view` signature matches the one of the `reducer`. Further, it also matches the [native JS `Array.prototype.reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) as well as [the general `reduce` method signature](http://ramdajs.com/0.18.0/docs/#reduce) provided by the [Foldable Typeclass](https://github.com/fantasyland/fantasy-land#foldable).)
+The other two parameters of the `view` are `dispatch` and `state` that have to match the type of the `action` and the `state` parameters of the `reducer`. (Note how the `view` signature matches the one of the `reducer`. Further, it also matches the [native JS `Array.prototype.reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) as well as [the general `reduce` method](http://ramdajs.com/0.18.0/docs/#reduce) signatures, the latter provided by the [Foldable Typeclass](https://github.com/fantasyland/fantasy-land#foldable).)
 The state, updated by the reducer, will be passed directly to the view (from the same `mount` call). And every action value used to call the `dispatch` function, will be passed directly as action to the `reducer`. For example, calling `dispatch('foo')` in the event handler inside the `view` will result in `foo` being passed as `action` to the `reducer`.
 
 This style of writing was inspired by https://github.com/ericelliott/react-pure-component-starter and https://medium.com/javascript-scene/baby-s-first-reaction-2103348eccdd
