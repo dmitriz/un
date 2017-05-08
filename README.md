@@ -11,7 +11,7 @@ EXPERIMENTAL: in development, contributions welcome!
 - No side-effects, testable by your favorite test runners
 - No external imports, no packages, no libraries
 - No extension of proprietary component classes (Backbone, React, ...)
-- No lock-ins, use your uncomponents with any framework or without any
+- No lock-ins, your uncomponents should be usable as plugins with or without any framework
 
 
 ## Why unframework?
