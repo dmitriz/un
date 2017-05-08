@@ -95,11 +95,11 @@ var Todos = {
 	view: function(vnode) {
 		var ui = vnode.state
 
-		var NewTodoInput = m => dispatch => 
+		var NewTodoInput = m => (placeholder, dispatch) => 
 			m("header.header", [
 				m("h1", "todos"),
 				m("input#new-todo", {
-					placeholder: 'What needs to be done?',
+					placeholder,
 					autofocus: true, 
 					onkeypress: dispatch
 				})
@@ -185,7 +185,7 @@ var Todos = {
 			]) 
 
 		return [
-			NewTodoInput(m)(ui.add),
+			NewTodoInput(m)('What needs to be done?', ui.add),
 			Main(m)(state),
 			state.todos.length ? Filter(m)(state, state.dispatch) : null,
 		]
