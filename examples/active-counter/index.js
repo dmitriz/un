@@ -24,8 +24,8 @@ const view = ({ button }) => (state, dispatch) => {
 
 
 // the only basic method you need to import from 'un.js'
-// const createMount = require('../../')
-const createMount = require('un.js')
+const createMount = require('../../')
+// const createMount = require('un.js')
 
 // configure the 'mount' method, the only method we need
 const mount = createMount({	
@@ -50,7 +50,7 @@ const el = document.createElement('div')
 document.body.appendChild(el)
 
 // mount our live uncomponent and get back its writeable stream of actions
-const actions = mount({ el, reducer, view, initState: 0 })
+const { actions } = mount({ el, reducer, view, initState: 0 })
 
 
 

@@ -21,17 +21,17 @@ const createMount = ({
 
 	const createElements = createTags(createElement)
 
-	createStream
-	.scan(reducer, initState, actions)
+	const states = createStream.scan(reducer, initState, actions)
 
 	// pipe into view
 	// view events wil update the actionStream
-	.map(state => view(createElements)(state, actions))
+	const vnodes = states.map(state => view(createElements)(state, actions))
 
 	// render to DOM
-	.map(vnode => createRender(el)(vnode))
+	vnodes.map(vnode => createRender(el)(vnode))
 
-	return actions
+	// return stream of vnodes, with states and actions streams patched
+	return Object.assign({}, vnodes, { states, actions })
 }
 
 module.exports = createMount
