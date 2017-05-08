@@ -26,7 +26,7 @@ const createMount = ({
 
 	// pipe into view
 	// view events wil update the actionStream
-	.map(view(createElements)(actions))
+	.map(state => view(createElements)(state, actions))
 
 	// render to DOM
 	.map(vnode => createRender(el)(vnode))

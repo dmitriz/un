@@ -4,7 +4,7 @@ const reducer = (state, action) =>
 	state + action
 
 // pure with no dependencies
-const view = ({ button }) => dispatch => state => {
+const view = ({ button }) => (state, dispatch) => {
 
 	const change = amount => 
 		button( 
@@ -24,8 +24,8 @@ const view = ({ button }) => dispatch => state => {
 
 
 // the only basic method you need to import from 'un.js'
-// const createMount = require('../../')
-const createMount = require('un.js')
+const createMount = require('../../')
+// const createMount = require('un.js')
 
 // configure the 'mount' method, the only method we need
 const mount = createMount({	
