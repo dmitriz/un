@@ -19,6 +19,6 @@
     "hyperscript-helpers": "^3.0.3",
     "mithril": "^1.1.1",
     "mithril-stream": "^1.0.0",
-    "un.js": "^0.2.1"
+    "un.js": "^0.3.1"
   }
 }

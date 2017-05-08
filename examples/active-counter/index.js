@@ -24,8 +24,8 @@ const view = ({ button }) => (state, dispatch) => {
 
 
 // the only basic method you need to import from 'un.js'
-const createMount = require('../../')
-// const createMount = require('un.js')
+// const createMount = require('../../')
+const createMount = require('un.js')
 
 // configure the 'mount' method, the only method we need
 const mount = createMount({	
