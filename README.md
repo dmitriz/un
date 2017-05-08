@@ -68,7 +68,7 @@ So we call `mount` with 4 basic properties:
 - `view`: Plain pure function taking `dispatcher` and `state` and returning new `state`, the state can be global, narrowed down, or completely local to the uncomponent, to cater for the [fractal architecture](https://staltz.com/unidirectional-user-interface-architectures.html). The view function dispatches actions just like in Redux and returns a virtual or real DOM element, depending on the library used in configuring the `mount`. But to be completely pure with no external dependency, the `view` must include the element creator factory as one of its parameters:
 
 ```js
-const view = h => dispatch => state => 
+const view = h => (state, dispatch) => 
 	h('div', `Hello World, your ${state} is wonderful!`)
 ```
 
@@ -77,11 +77,12 @@ where `h` stands for our favorite element creator passed to `createMount`. We fi
 Or use the `createTags` helpers (like [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers)) that you can conveniently destructure inside the view:
 
 ```js
-const view = ({ div }) => dispatch => state => 
+const view = ({ div }) => (state, dispatch) => 
 	div(`Hello World, your ${state} is wonderful!`)
 ```
 
-The other two parameters of the `view` are `dispatch` and `state` that have to match the type of the `action` and the `state` parameters of the `reducer`. The state, updated by the reducer, will be passed directly to the view (from the same `mount` call). And every action value used to call the `dispatch` function, will be passed directly as action to the `reducer`. For example, calling `dispatch('foo')` in the event handler inside the `view` will result in `foo` being passed as `action` to the `reducer`.
+The other two parameters of the `view` are `dispatch` and `state` that have to match the type of the `action` and the `state` parameters of the `reducer`. (Note how the `view` signature matches the one of the `reducer`.)
+The state, updated by the reducer, will be passed directly to the view (from the same `mount` call). And every action value used to call the `dispatch` function, will be passed directly as action to the `reducer`. For example, calling `dispatch('foo')` in the event handler inside the `view` will result in `foo` being passed as `action` to the `reducer`.
 
 This style of writing was inspired by https://github.com/ericelliott/react-pure-component-starter and https://medium.com/javascript-scene/baby-s-first-reaction-2103348eccdd
 
