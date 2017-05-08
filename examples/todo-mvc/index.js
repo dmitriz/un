@@ -84,8 +84,11 @@ var Todos = {
 		}
 	},
 	save: function(e) {
-		if (e.keyCode === 13 || e.type === "blur") state.dispatch("update", [e.target.value])
-		else if (e.keyCode === 27) state.dispatch("reset")
+		if (e.keyCode === 13 || e.type === "blur") {
+			state.dispatch("update", [e.target.value])
+		} else if (e.keyCode === 27) {
+			state.dispatch("reset")
+		}
 	},
 	oninit: state.computed,
 	onbeforeupdate: state.computed,
@@ -101,6 +104,52 @@ var Todos = {
 					onkeypress: dispatch
 				})
 			])
+
+		var Todo = m => todo =>
+			m("li", {
+				class: (todo.completed ? "completed" : "") 
+					+ " " 
+					+ (todo === state.editing ? "editing" : "")
+				}, [
+					m(".view", [
+						m("input.toggle", {
+							type: 'checkbox',
+							checked: todo.completed, 
+							onclick: () => ui.toggle(todo)
+						}),
+						m("label", {
+							ondblclick: () => state.dispatch("edit", [todo])
+						}, todo.title),
+						m("button.destroy", {
+							onclick: () => state.dispatch("destroy", [todo])
+						}),
+					]),
+					m("input.edit", {
+						onupdate: vnode => ui.focus(vnode, todo), 
+						onkeyup: ui.save, 
+						onblur: ui.save
+					})
+				])
+
+		var Main = m => 
+			m("section#main", {
+					style: {display: state.todos.length > 0 ? "" : "none"}
+			}, [
+				m("input#toggle-all", {
+					type: 'checkbox',
+					checked: state.remaining === 0, 
+					onclick: ui.toggleAll
+				}),
+				m("label", {
+					for: 'toggle-all',
+					onclick: ui.toggleAll
+				}, "Mark all as complete"),
+
+				m("ul#todo-list", state.todosByStatus.map(todo => 
+					Todo(m)(todo)
+				)),
+			])
+
 
 		var routes = ['/', '/active', '/completed']
 
@@ -135,60 +184,16 @@ var Todos = {
 				}, "Clear completed"),
 			]) 
 
-		var Todo = m => todo =>
-			m("li", {
-				class: (todo.completed ? "completed" : "") 
-					+ " " 
-					+ (todo === state.editing ? "editing" : "")
-				}, [
-					m(".view", [
-						m("input.toggle", {
-							type: 'checkbox',
-							checked: todo.completed, 
-							onclick: () => ui.toggle(todo)
-						}),
-						m("label", {
-							ondblclick: () => state.dispatch("edit", [todo])
-						}, todo.title),
-						m("button.destroy", {
-							onclick: () => state.dispatch("destroy", [todo])
-						}),
-					]),
-					m("input.edit", {
-						onupdate: vnode => ui.focus(vnode, todo), 
-						onkeyup: ui.save, 
-						onblur: ui.save
-					})
-				])
-
-
 		return [
 			NewTodoInput(m)(ui.add),
-
-			m("section#main", {
-				style: {display: state.todos.length > 0 ? "" : "none"}
-			}, [
-				m("input#toggle-all", {
-					type: 'checkbox',
-					checked: state.remaining === 0, 
-					onclick: ui.toggleAll
-				}),
-				m("label", {
-					for: 'toggle-all',
-					onclick: ui.toggleAll
-				}, "Mark all as complete"),
-
-				m("ul#todo-list", state.todosByStatus.map(todo => 
-					Todo(m)(todo)
-				)),
-			]),
-
+			Main(m),
 			state.todos.length ? Filter(m) : null,
 		]
 	}
 }
 
-m.route(document.getElementById("todoapp"), "/", {
+var el = document.getElementById("todoapp")
+m.route(el, "/", {
 	"/": Todos,
 	"/:status": Todos,
 })
