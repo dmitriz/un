@@ -102,13 +102,8 @@ var Todos = {
 				})
 			])
 
-		var Header = m('')
-
 		return [
-
-			Header,
-			// NewTodoInput(m)(ui),
-
+			NewTodoInput(m)(ui),
 			m("section#main", {
 				style: {display: state.todos.length > 0 ? "" : "none"}
 			}, [
