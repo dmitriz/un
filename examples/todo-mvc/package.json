@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "name": "todo-mvc",
+  "main": "index.js",
+  "description": "Todo MVC Example",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmitriz"
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "budo index.js:build.js --live --open",
+    "build": "browserify index.js -o build.js"
+  },
+  "keywords": [],
+  "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
+  "license": "MIT",
+  "dependencies": {
+    "mithril": "^1.1.1"
+  }
+}
