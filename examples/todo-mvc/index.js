@@ -105,7 +105,7 @@ var Todos = {
 				})
 			])
 
-		var Todo = m => (todo, dispatch) =>
+		var Todo = (todo, dispatch) =>
 			m("li", {
 				class: (todo.completed ? "completed" : "") 
 					+ " " 
@@ -146,7 +146,7 @@ var Todos = {
 				}, "Mark all as complete"),
 
 				m("ul#todo-list", state.todosByStatus.map(todo => 
-					Todo(m)(todo, ui)
+					Todo(todo, ui)
 				)),
 			])
 
@@ -158,7 +158,7 @@ var Todos = {
 			'/completed': 'Completed' 
 		}
 
-		var FilterLink = m => route => 
+		var FilterLink = route => 
 			m("li", 
 				m("a", {
 					href: route,
@@ -174,9 +174,9 @@ var Todos = {
 					state.remaining === 1 ? " item left" : " items left",
 				]),
 				m("ul#filters", [
-					FilterLink(m)('/'),
-					FilterLink(m)('/active'),
-					FilterLink(m)('/completed'),
+					FilterLink('/'),
+					FilterLink('/active'),
+					FilterLink('/completed'),
 				]),
 				m("button#clear-completed", {
 					onclick: () => dispatch("clear")
