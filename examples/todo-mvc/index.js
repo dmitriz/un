@@ -95,7 +95,7 @@ var Todos = {
 	view: function(vnode) {
 		var ui = vnode.state
 
-		var NewTodoInput = m => (placeholder, dispatch) => 
+		var NewTodoInput = (placeholder, dispatch) => 
 			m("header.header", [
 				m("h1", "todos"),
 				m("input#new-todo", {
@@ -131,7 +131,7 @@ var Todos = {
 					})
 				])
 
-		var Main = m => (state, dispatch) =>
+		var Main = (state, dispatch) =>
 			m("section#main", {
 					style: {display: state.todos.length > 0 ? "" : "none"}
 			}, [
@@ -150,7 +150,6 @@ var Todos = {
 				)),
 			])
 
-
 		var routes = ['/', '/active', '/completed']
 
 		var routeLabels = { 
@@ -168,7 +167,7 @@ var Todos = {
 				}, routeLabels[route])
 			)
 
-		var Filter = m => (state, dispatch) =>
+		var Filter = (state, dispatch) =>
 		 	m("footer#footer", [
 				m("span#todo-count", [
 					m("strong", state.remaining),
@@ -185,9 +184,9 @@ var Todos = {
 			]) 
 
 		return [
-			NewTodoInput(m)('What needs to be done?', ui.add),
-			Main(m)(state, ui.toggleAll),
-			state.todos.length ? Filter(m)(state, state.dispatch) : null,
+			NewTodoInput('What needs to be done?', ui.add),
+			Main(state, ui.toggleAll),
+			state.todos.length ? Filter(state, state.dispatch) : null,
 		]
 	}
 }
