@@ -102,6 +102,19 @@ var Todos = {
 				})
 			])
 
+		var routes = ['/', '/active', '/completed']
+
+		var routeLabel = route =>
+			({ '/': 'All', '/active': 'Active', '/completed': 'Completed' })[route]
+
+		var FilterLink = m => route => 
+			m("li", 
+				m("a[href='/']", {
+					oncreate: m.route.link, 
+					class: state.showing === route ? "selected" : ""
+				}, routeLabel(route))
+			)
+
 		var Filter = m =>
 		 	m("footer#footer", [
 				m("span#todo-count", [
@@ -109,9 +122,9 @@ var Todos = {
 					state.remaining === 1 ? " item left" : " items left",
 				]),
 				m("ul#filters", [
-					m("li", m("a[href='/']", {oncreate: m.route.link, class: state.showing === "" ? "selected" : ""}, "All")),
-					m("li", m("a[href='/active']", {oncreate: m.route.link, class: state.showing === "active" ? "selected" : ""}, "Active")),
-					m("li", m("a[href='/completed']", {oncreate: m.route.link, class: state.showing === "completed" ? "selected" : ""}, "Completed")),
+					FilterLink(m)('/'),
+					FilterLink(m)('/active'),
+					FilterLink(m)('/completed'),
 				]),
 				m("button#clear-completed", {
 					onclick: () => state.dispatch("clear")
@@ -148,14 +161,19 @@ var Todos = {
 			m("section#main", {
 				style: {display: state.todos.length > 0 ? "" : "none"}
 			}, [
-				m("input#toggle-all[type='checkbox']", {checked: state.remaining === 0, onclick: ui.toggleAll}),
-				m("label[for='toggle-all']", {onclick: ui.toggleAll}, "Mark all as complete"),
+				m("input#toggle-all", {
+					type: 'checkbox',
+					checked: state.remaining === 0, 
+					onclick: ui.toggleAll
+				}),
+				m("label", {
+					for: 'toggle-all',
+					onclick: ui.toggleAll
+				}, "Mark all as complete"),
 
-				m("ul#todo-list", [
-					state.todosByStatus.map(function(todo) {
-						return Todo(m)(todo)
-					}),
-				]),
+				m("ul#todo-list", state.todosByStatus.map(todo => 
+					Todo(m)(todo)
+				)),
 			]),
 
 			state.todos.length ? Filter(m) : null,
