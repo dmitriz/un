@@ -131,7 +131,7 @@ var Todos = {
 					})
 				])
 
-		var Main = m => 
+		var Main = m => state =>
 			m("section#main", {
 					style: {display: state.todos.length > 0 ? "" : "none"}
 			}, [
@@ -168,7 +168,7 @@ var Todos = {
 				}, routeLabels[route])
 			)
 
-		var Filter = m =>
+		var Filter = m => (state, dispatch) =>
 		 	m("footer#footer", [
 				m("span#todo-count", [
 					m("strong", state.remaining),
@@ -180,14 +180,14 @@ var Todos = {
 					FilterLink(m)('/completed'),
 				]),
 				m("button#clear-completed", {
-					onclick: () => state.dispatch("clear")
+					onclick: () => dispatch("clear")
 				}, "Clear completed"),
 			]) 
 
 		return [
 			NewTodoInput(m)(ui.add),
-			Main(m),
-			state.todos.length ? Filter(m) : null,
+			Main(m)(state),
+			state.todos.length ? Filter(m)(state, state.dispatch) : null,
 		]
 	}
 }
