@@ -137,22 +137,25 @@ var Todos = {
 
 		var Todo = m => todo =>
 			m("li", {
-				class: (todo.completed ? "completed" : "") + " " + (todo === state.editing ? "editing" : "")
+				class: (todo.completed ? "completed" : "") 
+					+ " " 
+					+ (todo === state.editing ? "editing" : "")
 				}, [
 					m(".view", [
-						m("input.toggle[type='checkbox']", {
+						m("input.toggle", {
+							type: 'checkbox',
 							checked: todo.completed, 
-							onclick: function() {ui.toggle(todo)}
+							onclick: () => ui.toggle(todo)
 						}),
 						m("label", {
-							ondblclick: function() {state.dispatch("edit", [todo])}
+							ondblclick: () => state.dispatch("edit", [todo])
 						}, todo.title),
 						m("button.destroy", {
-							onclick: function() {state.dispatch("destroy", [todo])}
+							onclick: () => state.dispatch("destroy", [todo])
 						}),
 					]),
 					m("input.edit", {
-						onupdate: function(vnode) {ui.focus(vnode, todo)}, 
+						onupdate: vnode => ui.focus(vnode, todo), 
 						onkeyup: ui.save, 
 						onblur: ui.save
 					})
