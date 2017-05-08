@@ -1,5 +1,5 @@
 {
-  "version": "0.1.5",
+  "version": "0.2.0",
   "name": "un.js",
   "main": "index.js",
   "description": "un: unframework for universal uncomponents",
