@@ -105,7 +105,7 @@ var Todos = {
 				})
 			])
 
-		var Todo = m => todo =>
+		var Todo = m => (todo, dispatch) =>
 			m("li", {
 				class: (todo.completed ? "completed" : "") 
 					+ " " 
@@ -115,7 +115,7 @@ var Todos = {
 						m("input.toggle", {
 							type: 'checkbox',
 							checked: todo.completed, 
-							onclick: () => ui.toggle(todo)
+							onclick: () => dispatch.toggle(todo)
 						}),
 						m("label", {
 							ondblclick: () => state.dispatch("edit", [todo])
@@ -125,28 +125,28 @@ var Todos = {
 						}),
 					]),
 					m("input.edit", {
-						onupdate: vnode => ui.focus(vnode, todo), 
-						onkeyup: ui.save, 
-						onblur: ui.save
+						onupdate: vnode => dispatch.focus(vnode, todo), 
+						onkeyup: dispatch.save, 
+						onblur: dispatch.save
 					})
 				])
 
-		var Main = m => state =>
+		var Main = m => (state, dispatch) =>
 			m("section#main", {
 					style: {display: state.todos.length > 0 ? "" : "none"}
 			}, [
 				m("input#toggle-all", {
 					type: 'checkbox',
 					checked: state.remaining === 0, 
-					onclick: ui.toggleAll
+					onclick: dispatch
 				}),
 				m("label", {
 					for: 'toggle-all',
-					onclick: ui.toggleAll
+					onclick: dispatch
 				}, "Mark all as complete"),
 
 				m("ul#todo-list", state.todosByStatus.map(todo => 
-					Todo(m)(todo)
+					Todo(m)(todo, ui)
 				)),
 			])
 
@@ -186,7 +186,7 @@ var Todos = {
 
 		return [
 			NewTodoInput(m)('What needs to be done?', ui.add),
-			Main(m)(state),
+			Main(m)(state, ui.toggleAll),
 			state.todos.length ? Filter(m)(state, state.dispatch) : null,
 		]
 	}
