@@ -95,11 +95,23 @@ var Todos = {
 	view: vnode => {
 		var ui = vnode.state
 
-		var NewTodoInput = (placeholder, dispatch) => 
+		var NewTodoReducer = (state, e) => {
+			if (e.keyCode === 13 && e.target.value) {
+				var title = e.target.value
+				// state.dispatch("createTodo", [e.target.value])
+				// state.todos.push({title: title.trim(), completed: false})
+				e.target.value = ""
+				return Object.assign({}, state, {
+					title: title.trim(), completed: false}
+				)
+			}
+		}			
+
+		var NewTodoInput = (dispatch) => 
 			m("header.header", [
 				m("h1", "todos"),
 				m("input#new-todo", {
-					placeholder,
+					placeholder: 'What needs to be done?',
 					autofocus: true, 
 					onkeypress: dispatch
 				})
@@ -184,7 +196,7 @@ var Todos = {
 			]) 
 
 		return [
-			NewTodoInput('What needs to be done?', ui.add),
+			NewTodoInput(ui.add),
 			Main(state, ui.toggleAll),
 			state.todos.length ? Filter(state, state.dispatch) : null,
 		]
