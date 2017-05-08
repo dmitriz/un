@@ -190,9 +190,7 @@ const actions = mount({ e, reducer, view, initState: 0 })
 ```
 
 
-## Inspirations (in random order)
-
-[@sindresorhus on reusable modules](https://github.com/sindresorhus/ama/issues/10#issuecomment-117766328)
+## Inspirations (incomplete and in random order)
 
 <a href="https://drboolean.gitbooks.io/mostly-adequate-guide/content/">Professor Frisby's Mostly Adequate Guide to Functional Programming</a>
 by the same author.
@@ -201,19 +199,23 @@ by the same author.
 
 [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by Andre Staltz, as well as [many other of his always enlightening posts](https://staltz.com/blog.html) and surely the [CycleJS project](https://cycle.js.org/)
 
-The [Redux](http://redux.js.org/) and [Elm](https://guide.elm-lang.org/architecture/) projects
+[@sindresorhus on reusable modules](https://github.com/sindresorhus/ama/issues/10#issuecomment-117766328)
 
-The [Ramda](http://ramdajs.com/) project and its sister [Fantasy Land](https://github.com/fantasyland/fantasy-land) and [Sanctuary](https://github.com/sanctuary-js/sanctuary) projects
+The [Ramda](http://ramdajs.com/) and its sister [Fantasy Land](https://github.com/fantasyland/fantasy-land) and [Sanctuary](https://github.com/sanctuary-js/sanctuary) projects
+
+The [Mithril framework](https://mithril.js.org/index.html)
+
+The [simple but powerful `flyd` stream library](https://github.com/paldepind/flyd)
 
 [Functional Frontend Architecture](https://github.com/paldepind/functional-frontend-architecture)
+
+The [Snabbdom virtual dom library](https://github.com/snabbdom/snabbdom) and the [broader Hyperscript Ecosystem](https://github.com/hyperhype/awesome-hyperscript)
+
+The [Redux](http://redux.js.org/) and [Elm](https://guide.elm-lang.org/architecture/) projects
 
 [TodoMVC example built with `most.js`](https://github.com/briancavalier/most-todomvc)
 
 [Meiosis](https://github.com/foxdonut/meiosis)
-
-[Mithril's architecture](https://mithril.js.org/index.html)
-
-The [simple but powerful `flyd` stream library](https://github.com/paldepind/flyd)
 
 
 To be extended...
