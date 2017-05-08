@@ -21,6 +21,7 @@ and try the [active counter example](https://github.com/dmitriz/un/tree/master/e
 - No external imports, no packages, no libraries
 - No extension of proprietary component classes (Backbone, React, ...)
 - No lock-ins, your uncomponents should be usable as plugins with or without any framework
+- Reuse your code and share with others accross frameworks with no boundaries
 
 
 ## Why unframework?
