@@ -1,13 +1,14 @@
 m = require('mithril')
 var mount = require('./un-mount')
 
+var saveLocal = (label, item) =>
+	localStorage[label] = JSON.stringify(item)
+
 //model
 var state = {
-	dispatch: function(action, args) {
+	dispatch: (action, args) => {
 		state[action].apply(state, args || [])
-		requestAnimationFrame(function() {
-			localStorage["todos-mithril"] = JSON.stringify(state.todos)
-		})
+		requestAnimationFrame(() => saveLocal("todos-mithril", state.todos))
 	},
 
 	todos: JSON.parse(localStorage["todos-mithril"] || "[]"),
@@ -16,16 +17,16 @@ var state = {
 	remaining: 0,
 	todosByStatus: [],
 
-	createTodo: function(title) {
-		state.todos.push({title: title.trim(), completed: false})
-	},
-	setStatuses: function(completed) {
+	createTodo: title => 
+		state.todos.push({title: title.trim(), completed: false}),
+
+	setStatuses: completed => {
 		for (var i = 0; i < state.todos.length; i++) state.todos[i].completed = completed
 	},
-	setStatus: function(todo, completed) {
+	setStatus: (todo, completed) => {
 		todo.completed = completed
 	},
-	destroy: function(todo) {
+	destroy: todo => {
 		var index = state.todos.indexOf(todo)
 		if (index > -1) state.todos.splice(index, 1)
 	},
