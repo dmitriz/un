@@ -104,15 +104,19 @@ var Todos = {
 
 		var routes = ['/', '/active', '/completed']
 
-		var routeLabel = route =>
-			({ '/': 'All', '/active': 'Active', '/completed': 'Completed' })[route]
+		var routeLabels = { 
+			'/': 'All', 
+			'/active': 'Active', 
+			'/completed': 'Completed' 
+		}
 
 		var FilterLink = m => route => 
 			m("li", 
-				m("a[href='/']", {
+				m("a", {
+					href: route,
 					oncreate: m.route.link, 
 					class: state.showing === route ? "selected" : ""
-				}, routeLabel(route))
+				}, routeLabels[route])
 			)
 
 		var Filter = m =>
