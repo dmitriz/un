@@ -70,12 +70,11 @@ var Todos = {
 			e.target.value = ""
 		}
 	},
-	toggleAll: function() {
-		state.dispatch("setStatuses", [document.getElementById("toggle-all").checked])
-	},
-	toggle: function(todo) {
-		state.dispatch("setStatus", [todo, !todo.completed])
-	},
+	toggleAll: () =>
+		state.dispatch("setStatuses", [
+			document.getElementById("toggle-all").checked
+		]),
+	toggle: todo => state.dispatch("setStatus", [todo, !todo.completed]),
 	focus: function(vnode, todo) {
 		if (todo === state.editing && vnode.dom !== document.activeElement) {
 			vnode.dom.value = todo.title
@@ -83,16 +82,16 @@ var Todos = {
 			vnode.dom.selectionStart = vnode.dom.selectionEnd = todo.title.length
 		}
 	},
-	save: function(e) {
-		if (e.keyCode === 13 || e.type === "blur") {
-			state.dispatch("update", [e.target.value])
-		} else if (e.keyCode === 27) {
-			state.dispatch("reset")
-		}
-	},
+	save: e => (e.keyCode === 13 || e.type === "blur") 
+		? state.dispatch("update", [e.target.value])
+		: (e.keyCode === 27) && state.dispatch("reset")
+		,
+
 	oninit: state.computed,
+
 	onbeforeupdate: state.computed,
-	view: function(vnode) {
+
+	view: vnode => {
 		var ui = vnode.state
 
 		var NewTodoInput = (placeholder, dispatch) => 
