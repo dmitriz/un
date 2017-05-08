@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+hyperscript-helpers@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/hyperscript-helpers/-/hyperscript-helpers-3.0.3.tgz#583ac45214c9ea810991feb97bdb37fc3d12a1e8"
+
+mithril-stream@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/mithril-stream/-/mithril-stream-1.0.0.tgz#ee68ad7006755a40653c6ed3a3efac5b6f89d0a4"
+
 mithril@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.1.tgz#0c98644c90503eec2187f66a851ba4053c4a5d66"
+
+un.js@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.1.4.tgz#836281b904047bd853259c375b15aad9d8cf6bdf"

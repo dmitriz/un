@@ -1,4 +1,5 @@
 m = require('mithril')
+var mount = require('./un-mount')
 
 //model
 var state = {
@@ -90,12 +91,27 @@ var Todos = {
 	onbeforeupdate: state.computed,
 	view: function(vnode) {
 		var ui = vnode.state
-		return [
+
+		var NewTodoInput = m => dispatch => 
 			m("header.header", [
 				m("h1", "todos"),
-				m("input#new-todo[placeholder='What needs to be done?'][autofocus]", {onkeypress: ui.add}),
-			]),
-			m("section#main", {style: {display: state.todos.length > 0 ? "" : "none"}}, [
+				m("input#new-todo", {
+					placeholder: 'What needs to be done?',
+					autofocus: true, 
+					onkeypress: dispatch.add
+				})
+			])
+
+		var Header = m('')
+
+		return [
+
+			Header,
+			// NewTodoInput(m)(ui),
+
+			m("section#main", {
+				style: {display: state.todos.length > 0 ? "" : "none"}
+			}, [
 				m("input#toggle-all[type='checkbox']", {checked: state.remaining === 0, onclick: ui.toggleAll}),
 				m("label[for='toggle-all']", {onclick: ui.toggleAll}, "Mark all as complete"),
 				m("ul#todo-list", [
@@ -111,18 +127,22 @@ var Todos = {
 					}),
 				]),
 			]),
-			state.todos.length ? m("footer#footer", [
-				m("span#todo-count", [
-					m("strong", state.remaining),
-					state.remaining === 1 ? " item left" : " items left",
-				]),
-				m("ul#filters", [
-					m("li", m("a[href='/']", {oncreate: m.route.link, class: state.showing === "" ? "selected" : ""}, "All")),
-					m("li", m("a[href='/active']", {oncreate: m.route.link, class: state.showing === "active" ? "selected" : ""}, "Active")),
-					m("li", m("a[href='/completed']", {oncreate: m.route.link, class: state.showing === "completed" ? "selected" : ""}, "Completed")),
-				]),
-				m("button#clear-completed", {onclick: function() {state.dispatch("clear")}}, "Clear completed"),
-			]) : null,
+			state.todos.length ? 
+				m("footer#footer", [
+					m("span#todo-count", [
+						m("strong", state.remaining),
+						state.remaining === 1 ? " item left" : " items left",
+					]),
+					m("ul#filters", [
+						m("li", m("a[href='/']", {oncreate: m.route.link, class: state.showing === "" ? "selected" : ""}, "All")),
+						m("li", m("a[href='/active']", {oncreate: m.route.link, class: state.showing === "active" ? "selected" : ""}, "Active")),
+						m("li", m("a[href='/completed']", {oncreate: m.route.link, class: state.showing === "completed" ? "selected" : ""}, "Completed")),
+					]),
+					m("button#clear-completed", {
+						onclick: () => state.dispatch("clear")
+					}, "Clear completed"),
+				]) 
+				: null,
 		]
 	}
 }

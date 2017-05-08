@@ -16,6 +16,9 @@
   "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
   "license": "MIT",
   "dependencies": {
-    "mithril": "^1.1.1"
+    "hyperscript-helpers": "^3.0.3",
+    "mithril": "^1.1.1",
+    "mithril-stream": "^1.0.0",
+    "un.js": "^0.1.4"
   }
 }

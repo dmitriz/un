@@ -10,6 +10,11 @@ const createMount = ({
 	// component object
  	e, reducer, view, initState
 
+// defaults
+} = {
+
+	// defaults to no action if not provided
+	reducer: (state, actions) => state
 }) => {
 
 	const actions = createStream()

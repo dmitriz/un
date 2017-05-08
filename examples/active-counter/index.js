@@ -23,12 +23,11 @@ const view = ({ button }) => dispatch => state => {
 }
 
 
-// the only basic method you need to import
+// the only basic method you need to import from 'un.js'
 // const createMount = require('../../')
 const createMount = require('un.js')
 
-// or React.createElement
-
+// configure the 'mount' method, the only method we need
 const mount = createMount({	
 
 	// your favorite stream factory
