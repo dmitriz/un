@@ -2172,6 +2172,13 @@ umd@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/umd/-/umd-3.0.1.tgz#8ae556e11011f63c2596708a8837259f01b3d60e"
 
+un.js@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.4.1.tgz#a90b9e0e09d8fcbd287c9b27414cd55dd9d0ae41"
+  dependencies:
+    hyperscript-helpers "^3.0.3"
+    mithril-stream "^1.0.0"
+
 url-trim@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/url-trim/-/url-trim-1.0.0.tgz#40057e2f164b88e5daca7269da47e6d1dd837adc"

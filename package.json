@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "hyperscript-helpers": "^3.0.3",
-    "mithril-stream": "^1.0.0"
+    "mithril-stream": "^1.0.0",
+    "un.js": "^0.4.1"
   }
 }
