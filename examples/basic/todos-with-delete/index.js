@@ -2,13 +2,20 @@
 // no imports - no external dependencies!
 
 // compute new state
-const reducer = ({ submitted } = {}, { type, value } = {}) => ({
-	'ADD': {
-		title: ``,
-		submitted: submitted.concat([value]),
-		changed: true		
-	}
-})[type]
+const reducer = (state = {}, { type, todo } = {}) => {
+	const { submitted } = state
+	return {
+		'ADD': {
+			title: ``,
+			submitted: submitted.concat([todo]),
+			changed: true		
+		},
+		'DELETE': Object.assign({}, {
+			// delete by title!
+			submitted: submitted.filter(t => t !== todo)
+		})
+	}[type] || state
+}
 
 
 
@@ -22,7 +29,7 @@ const view = ({ div, form, input, label, p, ul, li, header, section, h1, button 
 			form({
 				onsubmit: e => {
 					e.preventDefault()
-					dispatch({type: 'ADD', value: e.target.in.value})
+					dispatch({type: 'ADD', todo: e.target.in.value})
 				}
 			}, [
 				input('#new-todo', {
@@ -39,7 +46,7 @@ const view = ({ div, form, input, label, p, ul, li, header, section, h1, button 
 			div(".view", [
 				label(todo),
 				button(".destroy", {
-					onclick: () => dispatch("destroy", [todo])
+					onclick: () => dispatch({type: 'DELETE', todo})
 				}),
 			]),
 		])
