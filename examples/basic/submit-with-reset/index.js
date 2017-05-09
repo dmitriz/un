@@ -1,9 +1,12 @@
 // uncomponent - the pair of functions, 
 // no imports - no external dependencies!
 
-// simply return action's value as next state
-const reducer = ({current, changed}, value) => ({
-	current: value,
+// old state is not used, only action value
+const reducer = (state = {}, value) => ({
+
+	// reset input value here
+	inputVal: ``,
+	submitted: value,
 	changed: true
 })
 
@@ -11,7 +14,7 @@ const style = {width: '100%'}
 
 // pure with no dependencies
 const view = ({ form, input, p }) => 
-	({ current, changed }, dispatch) => [
+	({inputVal, submitted, changed }, dispatch) => [
 		`Welcome to my Submit: `,
 		`Type and hit ENTER: `,
 		form({
@@ -27,6 +30,9 @@ const view = ({ form, input, p }) =>
 				class: 'new-todo',
 				placeholder: 'What is your string today?',
 				autofocus: true,
+
+				// inputs value is controlled by function argument
+				value: inputVal
 			})
 		]),
 		changed 
@@ -34,7 +40,7 @@ const view = ({ form, input, p }) =>
 			: `You have submitted: `,
 		p({style: {
 			color: changed ? 'blue' : 'gray'
-		}}, current)
+		}}, submitted)
 	]
 
 
@@ -51,7 +57,8 @@ mount({
 	reducer, 
 	view, 
 	initState: {
-		current: `Nothing as of yet`,
+		inputVal: ``,
+		submitted: `Nothing as of yet`,
 		changed: false
 	}
 })
