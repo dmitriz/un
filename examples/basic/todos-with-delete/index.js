@@ -2,13 +2,13 @@
 // no imports - no external dependencies!
 
 // compute new state
-const reducer = ({ submitted } = {}, title) => ({
-	title: ``,
-
-	// add new value to submitted array
-	submitted: submitted.concat([title]),
-	changed: true
-})
+const reducer = ({ submitted } = {}, { type, value } = {}) => ({
+	'ADD': {
+		title: ``,
+		submitted: submitted.concat([value]),
+		changed: true		
+	}
+})[type]
 
 
 
@@ -22,7 +22,7 @@ const view = ({ div, form, input, label, p, ul, li, header, section, h1, button 
 			form({
 				onsubmit: e => {
 					e.preventDefault()
-					dispatch(e.target.in.value)
+					dispatch({type: 'ADD', value: e.target.in.value})
 				}
 			}, [
 				input('#new-todo', {
