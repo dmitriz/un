@@ -1,0 +1,22 @@
+{
+  "version": "0.1.0",
+  "main": "index.js",
+  "description": "controls",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmitriz"
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "open": "open index.html",
+    "dev": "budo index.js:build.js --live --open"
+  },
+  "keywords": [],
+  "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
+  "license": "MIT",
+  "dependencies": {
+    "hyperscript-helpers": "^3.0.3",
+    "mithril": "^1.1.1",
+    "un.js": "^0.4.1"
+  }
+}

@@ -2,15 +2,15 @@
 // no imports - no external dependencies!
 
 // simply return action's value as next state
-const reducer = ({current, changed}, value) => ({
-	current: value,
+const reducer = ({submitted, changed}, value) => ({
+	submitted: value,
 	changed: true
 })
 
 const style = {width: '100%'}
 
 // pure with no dependencies
-const view = ({ form, input, p }) => ({ current, changed }, dispatch) => [
+const view = ({ form, input, p }) => ({ submitted, changed }, dispatch) => [
 	`Welcome to my Submit: `,
 	`Type and hit ENTER: `,
 	form({
@@ -33,7 +33,7 @@ const view = ({ form, input, p }) => ({ current, changed }, dispatch) => [
 		: `You have submitted: `,
 	p({style: {
 		color: changed ? 'blue' : 'gray'
-	}}, current)
+	}}, submitted)
 ]
 
 
@@ -50,7 +50,7 @@ mount({
 	reducer, 
 	view, 
 	initState: {
-		current: `Nothing as of yet`,
+		submitted: `Nothing as of yet`,
 		changed: false
 	}
 })
