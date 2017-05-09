@@ -1,4 +1,5 @@
-// uncomponent - no imports - no external dependencies!
+// uncomponent - the pair of functions, 
+// no imports - no external dependencies!
 
 // simply return action's value as next state
 const reducer = (submitted, value) => value
