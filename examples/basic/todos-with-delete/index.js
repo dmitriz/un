@@ -13,7 +13,7 @@ const reducer = ({ submitted } = {}, title) => ({
 
 
 // pure with no dependencies
-const view = ({ form, input, p, ul, li, header, section, h1 }) => 
+const view = ({ div, form, input, label, p, ul, li, header, section, h1, button }) => 
 	({ title, submitted, changed }, dispatch) => {
 
 	const NewTodoInput = ({ title }) => 
@@ -34,16 +34,21 @@ const view = ({ form, input, p, ul, li, header, section, h1 }) =>
 			])
 		])
 
+	const Todo = (todo) =>
+		li([
+			div(".view", [
+				label(todo),
+				button(".destroy", {
+					onclick: () => dispatch("destroy", [todo])
+				}),
+			]),
+		])
+
 	const Main = ({ submitted }) =>
 		section("#main", {
 			style: {display: submitted.length > 0 ? "" : "none"}
 		}, [
-			ul('#todo-list', submitted.map(todo => 
-				li(` ${todo} `)
-			))
-			// m("ul#todo-list", submitted.map(todo => 
-			// 	Todo(todo, ui)
-			// )),
+			ul('#todo-list', submitted.map(todo => Todo(todo)))
 		])
 
 
