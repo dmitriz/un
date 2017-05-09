@@ -199,6 +199,16 @@ document.body.appendChild(e)
 const actions = mount({ e, reducer, view, initState: 0 })
 ```
 
+## Basic Examples
+
+The Basic Examples are intentionally made very simple and focused.
+
+[The sumbit example](https://github.com/dmitriz/un/tree/master/examples/basic/submit) demonstrates how to attach an simple update action to the `onsubmit` event of the `<form>`.
+
+[The submit-with-reset example](https://github.com/dmitriz/un/tree/master/examples/basic/submit-with-reset) in addition resets the input field after submission by providing additional state variable to control it.
+
+[The keypress example](https://github.com/dmitriz/un/tree/master/examples/basic/keypress) demonstrates how to pass all keys pressed to the dispatcher, and then via the reducer, back to the state.
+
 
 ## Inspirations (incomplete and in random order)
 
