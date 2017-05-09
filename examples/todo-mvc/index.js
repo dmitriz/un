@@ -108,16 +108,36 @@ var Todos = {
 		}			
 
 
-		var NewTodoView = (title, dispatch) => 
-			m("header.header", [
-				m("h1", "todos"),
-				m("input#new-todo", {
-					value: title,
-					placeholder: 'What needs to be done?',
-					autofocus: true, 
-					onkeypress: dispatch
-				})
-			])
+		var NewTodo = (dispatch) => {
+
+			// reducer will update the state
+			var NewTodoReducer = (title, e) => {
+				if (e.keyCode !== 13 || !e.target.value) return title
+
+				var title = e.target.value
+				dispatch(
+					Object.assign({}, state, 
+					{	title: title.trim(), completed: false }
+				))
+
+				// new title
+				return ''
+			}
+
+			// encapsulating the title state
+			var NewTodoView = (title, dispatchEvent) => 
+				m("header.header", [
+					m("h1", "todos"),
+					m("input#new-todo", {
+						value: title,
+						placeholder: 'What needs to be done?',
+						autofocus: true, 
+						onkeypress: dispatchEvent
+					})
+				])
+
+		}
+
 
 		var NewTodoInput = (dispatch) => 
 			m("header.header", [
