@@ -10,31 +10,32 @@ const reducer = (state = {}, value) => ({
 const style = {width: '100%'}
 
 // pure with no dependencies
-const view = ({ form, input, p }) => ({ submitted, changed }, dispatch) => [
-	`Welcome to my Submit: `,
-	`Type and hit ENTER: `,
-	form({
-		onsubmit: e => {
-			// prevents page reload
-			e.preventDefault()
-			dispatch(e.target.in.value)
-		}
-	}, [
-		input({
-			name: 'in',
-			style,
-			class: 'new-todo',
-			placeholder: 'What is your string today?',
-			autofocus: true,
-		})
-	]),
-	changed 
-		? `Thank you, here is your submission: ` 
-		: `You have submitted: `,
-	p({style: {
-		color: changed ? 'blue' : 'gray'
-	}}, submitted)
-]
+const view = ({ form, input, p }) => 
+	({ submitted, changed }, dispatch) => [
+		`Welcome to my Submit: `,
+		`Type and hit ENTER: `,
+		form({
+			onsubmit: e => {
+				// prevents page reload
+				e.preventDefault()
+				dispatch(e.target.in.value)
+			}
+		}, [
+			input({
+				name: 'in',
+				style,
+				class: 'new-todo',
+				placeholder: 'What is your string today?',
+				autofocus: true,
+			})
+		]),
+		changed 
+			? `Thank you, here is your submission: ` 
+			: `You have submitted: `,
+		p({style: {
+			color: changed ? 'blue' : 'gray'
+		}}, submitted)
+	]
 
 
 // the only method we need
