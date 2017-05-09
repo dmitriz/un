@@ -1,8 +1,8 @@
 // uncomponent - the pair of functions, 
 // no imports - no external dependencies!
 
-// simply return action's value as next state
-const reducer = ({submitted, changed}, value) => ({
+// compute new state
+const reducer = (state = {}, value) => ({
 	submitted: value,
 	changed: true
 })
