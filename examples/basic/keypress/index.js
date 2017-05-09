@@ -1,23 +1,24 @@
 // uncomponent - the pair of functions, 
 // no imports - no external dependencies!
 
-// simply return action's value as next state
-const reducer = ({current, changed}, value) => ({
-	current: value,
+// compute new state
+const reducer = ({ submitted } = {}, value) => ({
+
+	// add new value to submitted array
+	submitted: submitted.concat([value]),
 	changed: true
 })
 
 const style = {width: '100%'}
 
 // pure with no dependencies
-const view = ({ form, input, p }) => ({ current, changed }, dispatch) => [
-	`Welcome to my Submit: `,
-	`Type and hit ENTER: `,
+const view = ({ form, input, p, span }) => ({ submitted, changed }, dispatch) => [
+	`Press some key: `,
 	form({
-		onsubmit: e => {
+		onkeypress: e => {
 			// prevents page reload
 			e.preventDefault()
-			dispatch(e.target.in.value)
+			dispatch(e.code)
 		}
 	}, [
 		input({
@@ -29,11 +30,11 @@ const view = ({ form, input, p }) => ({ current, changed }, dispatch) => [
 		})
 	]),
 	changed 
-		? `Thank you, here is your submission: ` 
-		: `You have submitted: `,
+		? `Thank you, `: ``,
+	`You have pressed: `,
 	p({style: {
 		color: changed ? 'blue' : 'gray'
-	}}, current)
+	}}, submitted.map(key => span(` ${key} `)))
 ]
 
 
@@ -50,7 +51,7 @@ mount({
 	reducer, 
 	view, 
 	initState: {
-		current: `Nothing as of yet`,
+		submitted: [],
 		changed: false
 	}
 })
