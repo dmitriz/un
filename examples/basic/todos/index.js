@@ -13,7 +13,7 @@ const reducer = ({ submitted } = {}, title) => ({
 const style = {width: '100%'}
 
 // pure with no dependencies
-const view = ({ form, input, p }) => 
+const view = ({ form, input, p, li }) => 
 	({ title, submitted, changed }, dispatch) => [
 		`Enter your Todo: `,
 		form({
@@ -37,7 +37,7 @@ const view = ({ form, input, p }) =>
 			: `You have no Todos`,
 		p({style: {
 			color: changed ? 'blue' : 'gray'
-		}}, submitted.map(key => p(` ${key} `)))
+		}}, submitted.map(key => li(` ${key} `)))
 	]
 
 
