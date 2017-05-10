@@ -20,7 +20,7 @@ const reducer = (state = {}, { type, todo } = {}) => {
 
 
 // pure with no dependencies
-const view = ({ div, form, input, label, p, ul, li, header, section, h1, button }) => 
+const view = ({ div, header, form, input, label, p, ul, li, section, h1, button }) => 
 	({ title, submitted, changed }, dispatch) => {
 
 	const NewTodoInput = ({ title }) => 
@@ -61,9 +61,6 @@ const view = ({ div, form, input, label, p, ul, li, header, section, h1, button 
 
 	return [
 		NewTodoInput({ title }),
-		changed 
-			? `Thank you, here are your Todos:`
-			: `You have no Todos`,
 		Main({ submitted })
 	]
 }
@@ -82,6 +79,7 @@ mount({
 	reducer, 
 	view, 
 	initState: {
+		title: ``,
 		submitted: [],
 		changed: false
 	}
