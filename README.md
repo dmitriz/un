@@ -209,6 +209,11 @@ The Basic Examples are intentionally made very simple and focused.
 
 [The keypress example](https://github.com/dmitriz/un/tree/master/examples/basic/keypress) demonstrates how to pass all keys pressed to the dispatcher, and then via the reducer, back to the state.
 
+[The todos example](https://github.com/dmitriz/un/tree/master/examples/todos) demonstrates a basic interactive todos collector.
+
+[The todos-with-delete example](https://github.com/dmitriz/un/tree/master/examples/todos-with-delete) adds the delete feature to the previous example. It deviates slightly from the traditional todos examples, in which the deletion is done by name, i.e. all todos with the same name are deleted at the same time.
+
+
 
 ## Inspirations (incomplete and in random order)
 
