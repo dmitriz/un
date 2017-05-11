@@ -12,7 +12,7 @@ const mount = createMount({
 	createElement: require('mithril'),
 
 	// your favorite create tags helpers
-	createTags: require('hyperscript-helpers'),
+	createTags: require('react-hyperscript-helpers'),
 
 	// TODO: (React|Preact|Inferno).render, snabbdom-patch, replaceWith
 	createRender: element => vnode => require('mithril').render(element, vnode)

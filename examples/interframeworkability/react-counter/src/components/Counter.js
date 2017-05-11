@@ -45,6 +45,7 @@ class Counter extends Component {
         {' '}
 
         {
+          // place your pure function right here
           StyledButton(style, onDecrement, `unbutton for - `) 
         }
 
