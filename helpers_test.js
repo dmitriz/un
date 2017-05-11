@@ -9,16 +9,37 @@ describe('Addition', function () {
   })
 })
 
-describe('Factory transformer', () => {
-	const Factory = {
-		method: (...args) => [...args]
-	}
-	it('should get called with all arguments', () => {
-		expect(Factory.method()).toEqual([])
-		expect(Factory.method(1,2,'a3')).toEqual([1,2,'a3'])
+const Factory = {
+	// simply return the array of its args
+	method: (...args) => [...args]
+}
+const InheritedFactory = Object.create(Factory)
+
+// const TransformedFactory = methodToFactory('method')(Factory)
+// const TransformedInheritedFactory = methodToFactory('method')(InheritedFactory)
+
+const testFactory = Factory => {
+	const TransformedFactory = alias('from', 'to')(Factory)
+
+	describe(`Factory transformer`, () => {
+
+		it('should get called with all arguments', () => {
+			expect(Factory.method()).toEqual([])
+			expect(Factory.method(1,2,'a3')).toEqual([1,2,'a3'])
+		})
+		it('should transform factory into function executing method provided', () => {
+			expect(TransformedFactory(1,2,'a3')).toEqual([1,2,'a3'])
+		})
+		it('should keep all methods', () => {
+			expect(TransformedFactory.method()).toEqual([])
+			expect(TransformedFactory.method(1,2,'a3')).toEqual([1,2,'a3'])		
+		})
+		it('should not create own properties', () => {
+			expect(Object.keys(Factory)).toEqual([])
+		})
 	})
-	it('should transform factory into function executing method provided', () => {
-		const TransformedFactory = methodToFactory('method')(Factory)
-		expect(TransformedFactory(1,2,'a3')).toEqual([1,2,'a3'])
-	})
-})
+}
+
+;[Factory, InheritedFactory].map(testFactory)
+
+
