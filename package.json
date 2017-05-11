@@ -19,10 +19,16 @@
   "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
   "license": "MIT",
   "devDependencies": {
+    "browserify": "^14.3.0",
     "jasmine-core": "^2.6.1",
     "karma": "^1.7.0",
+    "karma-browserify": "^5.1.1",
     "karma-chrome-launcher": "^2.1.1",
-    "karma-jasmine": "^1.1.0"
+    "karma-jasmine": "^1.1.0",
+    "karma-webpack-preprocessor": "^1.0.1",
+    "npm-install-webpack-plugin": "^4.0.4",
+    "watchify": "^3.9.0",
+    "webpack": "^2.5.1"
   },
   "dependencies": {}
 }
