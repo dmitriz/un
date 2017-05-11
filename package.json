@@ -18,6 +18,8 @@
   "keywords": [],
   "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "karma": "^1.7.0"
+  },
   "dependencies": {}
 }

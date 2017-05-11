@@ -32,6 +32,7 @@ const mount = createMount({
 
 	// your favorite stream factory
 	// TODO: flyd, most, xstream
+	// createStream: require("flyd"),
 	createStream: require("mithril/stream"),
 
 	// your favorite element creator

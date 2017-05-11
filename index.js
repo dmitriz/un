@@ -1,5 +1,4 @@
 // main factory - no external dependencies
-
 const createMount = ({
 
 	// configuration object
