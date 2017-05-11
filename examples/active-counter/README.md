@@ -3,7 +3,11 @@
 ### Run in browser with no installations
 
 ```sh
-$ yarn open (or npm run open)
+$ yarn open
+```
+or
+```sh
+$ npm run open
 ```
 
 ### Auto-rebuild and reload on file save
