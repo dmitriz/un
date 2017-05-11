@@ -9,6 +9,7 @@
   "scripts": {
     "start": "npm run dev",
     "open": "open index.html",
+    "build": "browserify index.js -o build.js",
     "dev": "budo index.js:build.js --live --open"
   },
   "keywords": [],
