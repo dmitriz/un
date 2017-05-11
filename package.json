@@ -5,7 +5,7 @@
   "description": "un: unframework for universal uncomponents",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dmitriz"
+    "url": "https://github.com/dmitriz/un"
   },
   "scripts": {
     "start": "npm run dev",
@@ -19,11 +19,7 @@
   "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
   "license": "MIT",
   "devDependencies": {
-    "budo": "^10.0.3"
   },
   "dependencies": {
-    "hyperscript-helpers": "^3.0.3",
-    "mithril-stream": "^1.0.0",
-    "un.js": "^0.4.1"
   }
 }
