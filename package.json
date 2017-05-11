@@ -8,8 +8,6 @@
     "url": "https://github.com/dmitriz/un"
   },
   "scripts": {
-    "start": "npm run dev",
-    "dev": "budo index.js:build.js --live --open",
     "wdev": "open http://localhost:8080/ && webpack-dev-server",
     "pub": "npm version patch && npm publish && git push",
     "sync": "git ac && git pull --rebase && git push",
@@ -19,18 +17,17 @@
   "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
   "license": "MIT",
   "devDependencies": {
-    "brfs": "^1.4.3",
-    "browserify-shim": "^3.8.14",
     "browserify": "^14.3.0",
+    "browserify-shim": "^3.8.14",
     "jasmine-core": "^2.6.1",
     "karma": "^1.7.0",
     "karma-browserify": "^5.1.1",
     "karma-chrome-launcher": "^2.1.1",
     "karma-jasmine": "^1.1.0",
+    "karma-source-map-support": "^1.2.0",
     "watchify": "^3.9.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "browserify-shim": {
     "external": "global:External"
   }
