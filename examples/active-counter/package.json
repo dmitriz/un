@@ -1,10 +1,10 @@
 {
   "version": "0.1.0",
-  "main": "index.js",
-  "description": "controls",
+  "private": true,
+  "description": "active-counter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dmitriz"
+    "url": "https://github.com/dmitriz/un"
   },
   "scripts": {
     "start": "npm run dev",
