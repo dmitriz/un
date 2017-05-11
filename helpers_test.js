@@ -18,7 +18,7 @@ describe('Factory transformer', () => {
 		expect(Factory.method(1,2,'a3')).toEqual([1,2,'a3'])
 	})
 	it('should transform factory into function executing method provided', () => {
-		const TransformedFactory = methodToFactory(Factory)
+		const TransformedFactory = methodToFactory('method')(Factory)
 		expect(TransformedFactory(1,2,'a3')).toEqual([1,2,'a3'])
 	})
 })
