@@ -4,3 +4,5 @@
 const methodToFactory = methodName => Factory => {
 
 }
+
+module.exports = { methodToFactory }
