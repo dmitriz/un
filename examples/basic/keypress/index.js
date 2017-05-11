@@ -25,13 +25,13 @@ const view = ({ form, input, p, span }) => ({ submitted, changed }, dispatch) =>
 			name: 'in',
 			style,
 			class: 'new-todo',
-			placeholder: 'What is your string today?',
+			placeholder: 'What is your Key today?',
 			autofocus: true,
 		})
 	]),
 	changed 
-		? `Thank you, `: ``,
-	`You have pressed: `,
+		? `Thank you, your pressed keys are:`
+		: `You have not yet pressed a key...`,
 	p({style: {
 		color: changed ? 'blue' : 'gray'
 	}}, submitted.map(key => span(` ${key} `)))
