@@ -30,5 +30,8 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
+  },
+  "browserify-shim": {
+    "external": "global:External"
   }
 }
