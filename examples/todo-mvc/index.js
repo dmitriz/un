@@ -68,7 +68,10 @@ var state = {
 	}
 }
 
-var TodosClousure = ({ div, input }) => ({
+
+
+
+var TodosClousure = ({ div, input, label, button, ul, li }) => ({
 	add: e => {
 		if (e.keyCode === 13 && e.target.value) {
 			state.dispatch("createTodo", [e.target.value])
@@ -109,44 +112,12 @@ var TodosClousure = ({ div, input }) => ({
 					title: title.trim(), completed: false}
 				)
 			}
-		}			
-
-
-		var NewTodo = (dispatch) => {
-
-			// reducer will update the state
-			var NewTodoReducer = (title, e) => {
-				if (e.keyCode !== 13 || !e.target.value) return title
-
-				var title = e.target.value
-				dispatch(
-					Object.assign({}, state, 
-					{	title: title.trim(), completed: false }
-				))
-
-				// new title
-				return ''
-			}
-
-			// encapsulating the title state
-			var NewTodoView = (title, dispatchEvent) => 
-				m("header.header", [
-					m("h1", "todos"),
-					m("input#new-todo", {
-						value: title,
-						placeholder: 'What needs to be done?',
-						autofocus: true, 
-						onkeypress: dispatchEvent
-					})
-				])
-
 		}
 
-
 		var NewTodoInput = (dispatch) => 
-			m("header.header", [
-				m("h1", "todos"),
-				m("input#new-todo", {
+			header(".header", [
+				h1("todos"),
+				input("#new-todo", {
 					placeholder: 'What needs to be done?',
 					autofocus: true, 
 					onkeypress: dispatch
@@ -154,25 +125,25 @@ var TodosClousure = ({ div, input }) => ({
 			])
 
 		var Todo = (todo, dispatch) =>
-			m("li", {
+			li({
 				class: (todo.completed ? "completed" : "") 
 					+ " " 
 					+ (todo === state.editing ? "editing" : "")
 				}, [
-					m(".view", [
-						m("input.toggle", {
+					div(".view", [
+						input(".toggle", {
 							type: 'checkbox',
 							checked: todo.completed, 
 							onclick: () => dispatch.toggle(todo)
 						}),
-						m("label", {
+						label({
 							ondblclick: () => state.dispatch("edit", [todo])
 						}, todo.title),
-						m("button.destroy", {
+						button(".destroy", {
 							onclick: () => state.dispatch("destroy", [todo])
 						}),
 					]),
-					m("input.edit", {
+					input(".edit", {
 						onupdate: vnode => dispatch.focus(vnode, todo), 
 						onkeyup: dispatch.save, 
 						onblur: dispatch.save
@@ -414,6 +385,7 @@ var TodosClousure = ({ div, input }) => ({
 
 var el = document.getElementById("todoapp")
 m.route(el, "/", {
-	"/": TodosClousure,
-	"/:status": TodosClousure,
+	// import the `hh` library, so our components remain pure!
+	"/": TodosClousure(hh),
+	"/:status": TodosClousure(hh),
 })
