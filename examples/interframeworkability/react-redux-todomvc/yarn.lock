@@ -4323,6 +4323,10 @@ react-dom@^15.5.0:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
+react-hyperscript-helpers@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-hyperscript-helpers/-/react-hyperscript-helpers-1.2.0.tgz#56f925ba7114c9d7e82dbfacedcc9cb343bb564e"
+
 react-redux@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.3.tgz#86c3b68d56e74294a42e2a740ab66117ef6c019f"
