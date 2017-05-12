@@ -1,4 +1,9 @@
-m = require('mithril')
+// index.js -- the main app source file
+
+const m = require('mithril')
+const hh = require('hyperscript-helpers')(m)
+const { div, span, input, header, h1, h2, a, button } = hh
+
 var mount = require('./un-mount')
 
 var saveLocal = (label, item) =>
@@ -63,8 +68,7 @@ var state = {
 	}
 }
 
-//view
-var Todos = {
+var TodosClousure = ({ div, input }) => ({
 	add: e => {
 		if (e.keyCode === 13 && e.target.value) {
 			state.dispatch("createTodo", [e.target.value])
@@ -231,12 +235,185 @@ var Todos = {
 			NewTodoInput(ui.add),
 			Main(state, ui.toggleAll),
 			state.todos.length ? Filter(state, state.dispatch) : null,
-		]
+		]	
 	}
-}
+})
+
+//view
+// var Todos = {
+// 	add: e => {
+// 		if (e.keyCode === 13 && e.target.value) {
+// 			state.dispatch("createTodo", [e.target.value])
+// 			e.target.value = ""
+// 		}
+// 	},
+// 	toggleAll: () => {
+// 		var toggleAllEl = document.getElementById("toggle-all")
+// 		return state.dispatch("setStatuses", [toggleAllEl.checked])
+// 	},
+// 	toggle: todo => state.dispatch("setStatus", [todo, !todo.completed]),
+// 	focus: function(vnode, todo) {
+// 		if (todo === state.editing && vnode.dom !== document.activeElement) {
+// 			vnode.dom.value = todo.title
+// 			vnode.dom.focus()
+// 			vnode.dom.selectionStart = vnode.dom.selectionEnd = todo.title.length
+// 		}
+// 	},
+// 	save: e => (e.keyCode === 13 || e.type === "blur") 
+// 		? state.dispatch("update", [e.target.value])
+// 		: (e.keyCode === 27) && state.dispatch("reset")
+// 		,
+
+// 	oninit: state.computed,
+
+// 	onbeforeupdate: state.computed,
+
+// 	view: vnode => {
+// 		var ui = vnode.state
+
+// 		var NewTodoReducer = (title, e) => {
+// 			if (e.keyCode === 13 && e.target.value) {
+// 				var title = e.target.value
+// 				// state.dispatch("createTodo", [e.target.value])
+// 				// state.todos.push({title: title.trim(), completed: false})
+// 				e.target.value = ""
+// 				return Object.assign({}, state, {
+// 					title: title.trim(), completed: false}
+// 				)
+// 			}
+// 		}			
+
+
+// 		var NewTodo = (dispatch) => {
+
+// 			// reducer will update the state
+// 			var NewTodoReducer = (title, e) => {
+// 				if (e.keyCode !== 13 || !e.target.value) return title
+
+// 				var title = e.target.value
+// 				dispatch(
+// 					Object.assign({}, state, 
+// 					{	title: title.trim(), completed: false }
+// 				))
+
+// 				// new title
+// 				return ''
+// 			}
+
+// 			// encapsulating the title state
+// 			var NewTodoView = (title, dispatchEvent) => 
+// 				m("header.header", [
+// 					m("h1", "todos"),
+// 					m("input#new-todo", {
+// 						value: title,
+// 						placeholder: 'What needs to be done?',
+// 						autofocus: true, 
+// 						onkeypress: dispatchEvent
+// 					})
+// 				])
+
+// 		}
+
+
+// 		var NewTodoInput = (dispatch) => 
+// 			m("header.header", [
+// 				m("h1", "todos"),
+// 				m("input#new-todo", {
+// 					placeholder: 'What needs to be done?',
+// 					autofocus: true, 
+// 					onkeypress: dispatch
+// 				})
+// 			])
+
+// 		var Todo = (todo, dispatch) =>
+// 			m("li", {
+// 				class: (todo.completed ? "completed" : "") 
+// 					+ " " 
+// 					+ (todo === state.editing ? "editing" : "")
+// 				}, [
+// 					m(".view", [
+// 						m("input.toggle", {
+// 							type: 'checkbox',
+// 							checked: todo.completed, 
+// 							onclick: () => dispatch.toggle(todo)
+// 						}),
+// 						m("label", {
+// 							ondblclick: () => state.dispatch("edit", [todo])
+// 						}, todo.title),
+// 						m("button.destroy", {
+// 							onclick: () => state.dispatch("destroy", [todo])
+// 						}),
+// 					]),
+// 					m("input.edit", {
+// 						onupdate: vnode => dispatch.focus(vnode, todo), 
+// 						onkeyup: dispatch.save, 
+// 						onblur: dispatch.save
+// 					})
+// 				])
+
+// 		var Main = (state, dispatch) =>
+// 			m("section#main", {
+// 					style: {display: state.todos.length > 0 ? "" : "none"}
+// 			}, [
+// 				m("input#toggle-all", {
+// 					type: 'checkbox',
+// 					checked: state.remaining === 0, 
+// 					onclick: dispatch
+// 				}),
+// 				m("label", {
+// 					for: 'toggle-all',
+// 					onclick: dispatch
+// 				}, "Mark all as complete"),
+
+// 				m("ul#todo-list", state.todosByStatus.map(todo => 
+// 					Todo(todo, ui)
+// 				)),
+// 			])
+
+// 		var routes = ['/', '/active', '/completed']
+
+// 		var routeLabels = { 
+// 			'/': 'All', 
+// 			'/active': 'Active', 
+// 			'/completed': 'Completed' 
+// 		}
+
+// 		var FilterLink = route => 
+// 			m("li", 
+// 				m("a", {
+// 					href: route,
+// 					oncreate: m.route.link, 
+// 					class: state.showing === route ? "selected" : ""
+// 				}, routeLabels[route])
+// 			)
+
+// 		var Filter = (state, dispatch) =>
+// 		 	m("footer#footer", [
+// 				m("span#todo-count", [
+// 					m("strong", state.remaining),
+// 					state.remaining === 1 ? " item left" : " items left",
+// 				]),
+// 				m("ul#filters", [
+// 					FilterLink('/'),
+// 					FilterLink('/active'),
+// 					FilterLink('/completed'),
+// 				]),
+// 				m("button#clear-completed", {
+// 					onclick: () => dispatch("clear")
+// 				}, "Clear completed"),
+// 			]) 
+
+// 		return [
+// 			NewTodoInput(ui.add),
+// 			Main(state, ui.toggleAll),
+// 			state.todos.length ? Filter(state, state.dispatch) : null,
+// 		]
+// 	}
+
+// }
 
 var el = document.getElementById("todoapp")
 m.route(el, "/", {
-	"/": Todos,
-	"/:status": Todos,
+	"/": TodosClousure,
+	"/:status": TodosClousure,
 })
