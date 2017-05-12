@@ -68,7 +68,7 @@ const mount = createMount({
 ```
 
 So instead of having external dependencies in *every file*, 
-`un` simply lets you provide those libraries **once** and return the `mount` function, the only function from `un` that you need. The role of the `mount` is similar (and inspired by) [`Mithril` `m.mount`](https://mithril.js.org/mount.html) or `React.render` with auto-redrawing facility. The key idea is, attaching a live component to an element should be as simple as calling a function and `mount` does exactly that:
+`un` simply lets you provide those libraries **once** and return the `mount` function, the only function from `un` that you need. The role of the `mount` is similar (and inspired by) [`Mithril` `m.mount`](https://mithril.js.org/mount.html) or `React.render` with auto-redrawing facility. Our key vision is, attaching a live component to an element should be as simple as calling a function and `mount` does exactly that:
 
 
 ```js
@@ -126,7 +126,22 @@ Note that you can absolutely ignore the stream part and write your code without 
 A basic example below is demonstrating how the action stream can be externally driven in addition to user actions.
 
 
-## Basic example
+## Full reactive control of your uncomponents
+
+The `un` mount function, created as described above, 
+returns for every uncomponent, the object `{ streams, actions }`
+holding the streams of the actions and the states
+(we like to refer to streams by plurals to emphasize their collection nature).
+
+That means, you can conveniently add any complex behavior
+to your uncomponent by piping external actions into its action stream,
+or you can attach an external subscriber to the state stream,
+to be updated on any state changes in a reactive fashion.
+
+[The active-counter example](https://github.com/dmitriz/un/tree/master/examples/active-counter) demonstrates this feature.
+
+
+## [The active-counter example](https://github.com/dmitriz/un/tree/master/examples/active-counter)
 
 
 ### Pure reducer function
