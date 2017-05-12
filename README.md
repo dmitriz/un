@@ -9,7 +9,7 @@
 # un.js
 unframework for universal uncomponents
 
-Contributions and Feedback highly welcome!
+### Contributions and Feedback are highly welcome!
 
 ## Quick start
 
