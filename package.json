@@ -27,7 +27,9 @@
     "karma-source-map-support": "^1.2.0",
     "watchify": "^3.9.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "karma-firefox-launcher": "^1.0.1"
+  },
   "browserify-shim": {
     "external": "global:External"
   }

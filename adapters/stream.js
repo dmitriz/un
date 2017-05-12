@@ -1,5 +1,5 @@
 /**
- * A stream is a list of values emitted at discrete time moments.
+ * A stream is a sequence of values emitted at discrete time moments.
  */
 
 /**
