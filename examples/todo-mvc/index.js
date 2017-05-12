@@ -120,12 +120,19 @@ var TodosClousure = ({
 				TodoTextInput(dispatch)
 			])
 
-		var Todo = (todo, dispatch) =>
-			li({
-				class: (todo.completed ? "completed" : "") 
-					+ " " 
-					+ (todo === state.editing ? "editing" : "")
-				}, [
+		var TodoItem = (todo, dispatch) =>
+			li(
+				{
+					class: (todo.completed ? "completed" : "") 
+						+ " " 
+						+ (todo === state.editing ? "editing" : "")
+				}, 
+				state.editing ? 
+					input(".edit", {
+						onupdate: vnode => dispatch.focus(vnode, todo), 
+						onkeyup: dispatch.save, 
+						onblur: dispatch.save
+					}) :
 					div(".view", [
 						input(".toggle", {
 							type: 'checkbox',
@@ -138,13 +145,8 @@ var TodosClousure = ({
 						button(".destroy", {
 							onclick: () => state.dispatch("destroy", [todo])
 						}),
-					]),
-					input(".edit", {
-						onupdate: vnode => dispatch.focus(vnode, todo), 
-						onkeyup: dispatch.save, 
-						onblur: dispatch.save
-					})
-				])
+					])
+				)
 
 		var MainSection = (state, dispatch) =>
 			section("#main", {
@@ -161,7 +163,7 @@ var TodosClousure = ({
 				}, "Mark all as complete"),
 
 				ul("#todo-list", state.todosByStatus.map(todo => 
-					Todo(todo, ui)
+					TodoItem(todo, ui)
 				)),
 			])
 
