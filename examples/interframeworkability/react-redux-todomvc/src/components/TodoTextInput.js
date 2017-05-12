@@ -1,10 +1,23 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import hh from 'react-hyperscript-helpers'
-const { input } = hh
 
+// pure function with no dependencies
+const view = ({ input }) => ({ 
+  edit, newTodo, value, placeholder, onBlur, onChange, onKeyDown 
+}) => 
+  input({
+    className: classnames({ edit, 'new-todo': newTodo }),
+    type: 'text',
+    autoFocus: true,
+    placeholder,
+    value,
+    onBlur,
+    onChange,
+    onKeyDown
+  })
 
 
 export default class TodoTextInput extends Component {
@@ -40,7 +53,7 @@ export default class TodoTextInput extends Component {
     }
   }
 
-  render = () => view({
+  render = () => view(hh)({
     edit: this.props.editing,
     newTodo: this.props.newTodo,
     placeholder: this.props.placeholder,
@@ -50,17 +63,5 @@ export default class TodoTextInput extends Component {
     onKeyDown: this.handleSubmit
   })
 }
-
-const view = ({ edit, newTodo, value, placeholder, onBlur, onChange, onKeyDown }) => 
-  input({
-    className: classnames({ edit, 'new-todo': newTodo }),
-    type: 'text',
-    autoFocus: true,
-    placeholder,
-    value,
-    onBlur,
-    onChange,
-    onKeyDown
-  })
 
 
