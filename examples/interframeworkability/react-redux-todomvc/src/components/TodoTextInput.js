@@ -14,19 +14,23 @@ const reducer = ( state, { e, value } ) => ({
 
 // pure function with no dependencies
 const view = ({ input }) => ({ 
-  edit, newTodo, value, placeholder, onBlur
-}, dispatch) => 
-  input({
-    className: classnames({ edit, 'new-todo': newTodo }),
-    type: 'text',
-    autoFocus: true,
-    placeholder,
-    value,
-    onBlur,
-    onChange: e => dispatch({value: e.target.value}),
-    onKeyDown: e => dispatch({e, value: e.target.value})
-  })
 
+    // hold these simply in the closure instead of
+    // everywhere prefixing with `this.props.`
+    edit, newTodo, value, placeholder, onBlur
+  }, 
+  dispatch
+
+) => input({
+  className: classnames({ edit, 'new-todo': newTodo }),
+  type: 'text',
+  autoFocus: true,
+  placeholder,
+  value,
+  onBlur,
+  onChange: e => dispatch({value: e.target.value}),
+  onKeyDown: e => dispatch({e, value: e.target.value})
+})
 
 
 // pure functional component
@@ -34,11 +38,7 @@ export default ({
   editing, newTodo, placeholder, text, onSave
 }) => {
 
-  const handleBlur = e => {
-    if (!newTodo) {
-      onSave(e.target.value)
-    }
-  }
+  const handleBlur = e => !newTodo && onSave(e.target.value)
 
   const handleSubmit = e => {
     const text = e.target.value.trim()
@@ -48,7 +48,6 @@ export default ({
       if (newTodo) {
         // this.setState({ text: '' })
       }
-
     }
   }
 
