@@ -141,6 +141,17 @@ to be updated on any state changes in a reactive fashion.
 [The active-counter example](https://github.com/dmitriz/un/tree/master/examples/active-counter) demonstrates this feature.
 
 
+### `un` reactive vision
+
+Right now the streams provided by `un` conform to the [Mithril Stream API](https://mithril.js.org/stream.html)
+
+In order to make using `un` as universal and painless as possible, 
+and accessible to broader audience, we would like to facilitate pluging other stream libraries. 
+So you can use your favorite stream api to control your uncomponents.
+
+Help and cotributions are welcome!
+
+
 ## [The active-counter example](https://github.com/dmitriz/un/tree/master/examples/active-counter)
 
 
