@@ -9,9 +9,7 @@
 # un.js
 unframework for universal uncomponents
 
-## Status
-
-EXPERIMENTAL: in development, contributions welcome!
+Contributions and Feedback highly welcome!
 
 ## Quick start
 
@@ -45,9 +43,9 @@ and try the [active counter example](https://github.com/dmitriz/un/tree/master/e
 
 ## What is provided?
 
-Currently a single tiny factory function called `createMount`. [See here the complete code.](https://github.com/dmitriz/un/blob/master/index.js) Its role is similar to `React.render`, in which you would typically see it in only few places. 
+Currently a single tiny factory function called `createMount`. [See here the complete code.](https://github.com/dmitriz/un/blob/master/index.js) Its role is similar to `React.render`, in which you would typically see it in only few places in your app. 
 
-Here is a usage example. Instead of learning new API, new framework or long set of methods your simply import your favorite familiar libraries that you are already using anyway:
+Here is a usage example. Instead of learning new API, new framework or long set of new methods, your simply import your favorite familiar libraries that you are already using anyway:
 
 
 ```js
@@ -69,7 +67,8 @@ const mount = createMount({
 })
 ```
 
-So instead of having external dependencies, `un` simply lets you provide those libraries and return the `mount` function, the only function from `un` that you need. The role of the `mount` is similar (and inspired by) [`Mithril` `m.mount`](https://mithril.js.org/mount.html) or `React.render` with auto-redrawing facility. The key idea is, attaching a live component to an element should be as simple as calling a function and `mount` does exactly that:
+So instead of having external dependencies in *every file*, 
+`un` simply lets you provide those libraries **once** and return the `mount` function, the only function from `un` that you need. The role of the `mount` is similar (and inspired by) [`Mithril` `m.mount`](https://mithril.js.org/mount.html) or `React.render` with auto-redrawing facility. The key idea is, attaching a live component to an element should be as simple as calling a function and `mount` does exactly that:
 
 
 ```js
