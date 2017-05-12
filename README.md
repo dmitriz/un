@@ -136,11 +136,11 @@ returns for every uncomponent, the object
   actions: streamOfActions 
 }
 ```
-holding the streams of the actions and the states
+holding the state and action streams
 (we like to refer to streams by plurals to emphasize their collection nature).
 
 That means, you can conveniently add any complex behavior
-to your uncomponent by piping external actions into its action stream,
+to your uncomponent by piping the external actions into its action stream,
 or you can attach an external subscriber to the state stream,
 to be updated on any state changes in a reactive fashion.
 
