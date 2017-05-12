@@ -2,7 +2,6 @@
 
 const m = require('mithril')
 const hh = require('hyperscript-helpers')(m)
-// const { div, span, input, header, h1, h2, a, button } = hh
 
 var mount = require('./un-mount')
 
@@ -23,11 +22,14 @@ var state = {
 	todosByStatus: [],
 
 	createTodo: title => 
-		state.todos.push({title: title.trim(), completed: false}),
+		state.todos.unshift({title: title.trim(), completed: false}),
 
 	setStatuses: completed => {
-		for (var i = 0; i < state.todos.length; i++) state.todos[i].completed = completed
+		for (var i = 0; i < state.todos.length; i++) {
+			state.todos[i].completed = completed
+		}
 	},
+
 	setStatus: (todo, completed) => {
 		todo.completed = completed
 	},
@@ -104,14 +106,18 @@ var TodosClousure = ({
 	view: vnode => {
 		var ui = vnode.state
 
-		var NewTodoInput = (dispatch) => 
+		var TodoTextInput = dispatch => 
+			input("#new-todo", {
+				placeholder: 'What needs to be done?',
+				autofocus: true, 
+				onkeypress: dispatch
+			})
+
+
+		var Header = dispatch => 
 			header(".header", [
 				h1("todos"),
-				input("#new-todo", {
-					placeholder: 'What needs to be done?',
-					autofocus: true, 
-					onkeypress: dispatch
-				})
+				TodoTextInput(dispatch)
 			])
 
 		var Todo = (todo, dispatch) =>
@@ -140,7 +146,7 @@ var TodosClousure = ({
 					})
 				])
 
-		var Main = (state, dispatch) =>
+		var MainSection = (state, dispatch) =>
 			section("#main", {
 					style: {display: state.todos.length > 0 ? "" : "none"}
 			}, [
@@ -193,8 +199,8 @@ var TodosClousure = ({
 			]) 
 
 		return [
-			NewTodoInput(ui.add),
-			Main(state, ui.toggleAll),
+			Header(ui.add),
+			MainSection(state, ui.toggleAll),
 			state.todos.length ? Filter(state, state.dispatch) : null,
 		]	
 	}
