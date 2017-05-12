@@ -5,6 +5,8 @@ import classnames from 'classnames'
 import hh from 'react-hyperscript-helpers'
 const { input } = hh
 
+
+
 export default class TodoTextInput extends Component {
   static propTypes = {
     onSave: PropTypes.func.isRequired,
@@ -38,18 +40,27 @@ export default class TodoTextInput extends Component {
     }
   }
 
-  render = () =>
-    input({
-      className: classnames({
-        edit: this.props.editing,
-        'new-todo': this.props.newTodo
-      }),
-      type: 'text',
-      placeholder: this.props.placeholder,
-      autoFocus: true,
-      value: this.state.text,
-      onBlur: this.handleBlur,
-      onChange: this.handleChange,
-      onKeyDown: this.handleSubmit
-    })
+  render = () => view({
+    edit: this.props.editing,
+    newTodo: this.props.newTodo,
+    placeholder: this.props.placeholder,
+    value: this.state.text,
+    onBlur: this.handleBlur,
+    onChange: this.handleChange,
+    onKeyDown: this.handleSubmit
+  })
 }
+
+const view = ({ edit, newTodo, value, placeholder, onBlur, onChange, onKeyDown }) => 
+  input({
+    className: classnames({ edit, 'new-todo': newTodo }),
+    type: 'text',
+    autoFocus: true,
+    placeholder,
+    value,
+    onBlur,
+    onChange,
+    onKeyDown
+  })
+
+
