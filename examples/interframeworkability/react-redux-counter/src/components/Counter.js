@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { button } from 'react-hyperscript-helpers'
+import hh from 'react-hyperscript-helpers'
+const { button } = hh
 
+// uncomponent: pure function, no dependencies, 
+// testable in any environment
+const StyledButton = ({ button }) => (style, onClick, label) => 
+  button({ style, onClick }, label)
 
-const StyledButton = (style, onClick, label) => 
+const StyledButtonWithProps = ({style, onClick, label}) => 
   button({ style, onClick }, label)
 
 
@@ -46,8 +51,16 @@ class Counter extends Component {
 
         {
           // place your pure function right here
-          StyledButton(style, onDecrement, `unbutton for - `) 
+          StyledButton(hh)(style, onDecrement, `pure unbutton for - `) 
         }
+
+        {' '}
+
+        <StyledButtonWithProps
+          style={style} 
+          onClick={onDecrement} 
+          label={`jsx unbutton for - `}
+        />
 
         {' '}
         <button onClick={this.incrementIfOdd}>

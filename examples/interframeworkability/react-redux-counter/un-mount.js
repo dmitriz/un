@@ -7,15 +7,11 @@ const mount = createMount({
 	// TODO: flyd, most, xstream
 	createStream: require("mithril/stream"),
 
-	// your favorite element creator
-	// TODO: (React|Preact|Inferno).createElement, snabbdom/h, hyperscript
-	createElement: require('mithril'),
-
 	// your favorite create tags helpers
-	createTags: require('hyperscript-helpers'),
+	createTags: require('react-hyperscript-helpers'),
 
 	// TODO: (React|Preact|Inferno).render, snabbdom-patch, replaceWith
-	createRender: element => vnode => require('mithril').render(element, vnode)
+	createRender: require('react').Render
 })
 
 // export configured 'mount' with our library choices
