@@ -9,16 +9,19 @@
   },
   "scripts": {
     "start": "npm run dev",
-    "dev": "budo index.js:build.js --live --open",
+    "dev": "budo index.js:build.js -t browserify-css --live --open",
     "build": "browserify index.js -o build.js"
   },
   "keywords": [],
   "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
   "license": "MIT",
   "dependencies": {
+    "browserify-css": "^0.10.1",
+    "cssify": "^1.0.3",
     "hyperscript-helpers": "^3.0.3",
     "mithril": "^1.1.1",
     "mithril-stream": "^1.0.0",
+    "todomvc-app-css": "^2.1.0",
     "un.js": "^0.4.1"
   }
 }

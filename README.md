@@ -1,8 +1,8 @@
 ```
     __   __  _____   
    / /  / / / ___ \   
-  / /  / / / /  / / 
- / /__/ / / /  / /   
+  / /  / / / /  / /      (Logo inpiration from  [MostJS](https://github.com/cujojs/most))
+ / /__/ / / /  / /      
  \_____/ /_/  /_/
 ```
 

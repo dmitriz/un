@@ -1,4 +1,5 @@
 // index.js -- the main app source file
+const css = require('todomvc-app-css/index.css')
 
 const m = require('mithril')
 const hh = require('hyperscript-helpers')(m)
