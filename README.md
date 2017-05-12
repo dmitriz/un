@@ -129,7 +129,13 @@ A basic example below is demonstrating how the action stream can be externally d
 ## Full reactive control of your uncomponents
 
 The `un` mount function, created as described above, 
-returns for every uncomponent, the object `{ streams, actions }`
+returns for every uncomponent, the object 
+```js
+{ 
+	states: streamOfStates, 
+	actions: streamOfActions 
+}
+```
 holding the streams of the actions and the states
 (we like to refer to streams by plurals to emphasize their collection nature).
 
