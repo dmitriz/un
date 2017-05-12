@@ -14,7 +14,7 @@ const reducer = ( state, { e, value } ) => ({
 
 // pure function with no dependencies
 const view = ({ input }) => ({ 
-  edit, newTodo, value, placeholder, onBlur, onChange, onKeyDown 
+  edit, newTodo, value, placeholder, onBlur
 }, dispatch) => 
   input({
     className: classnames({ edit, 'new-todo': newTodo }),
@@ -23,12 +23,50 @@ const view = ({ input }) => ({
     placeholder,
     value,
     onBlur,
-    onChange,
+    onChange: e => dispatch({value: e.target.value}),
     onKeyDown: e => dispatch({e, value: e.target.value})
   })
 
 
-export default class TodoTextInput extends Component {
+
+// pure functional component
+export default ({
+  editing, newTodo, placeholder, text, onSave
+}) => {
+
+  const handleBlur = e => {
+    if (!newTodo) {
+      onSave(e.target.value)
+    }
+  }
+
+  const handleSubmit = e => {
+    const text = e.target.value.trim()
+    if (e.which === 13) {
+      onSave(text)
+
+      if (newTodo) {
+        // this.setState({ text: '' })
+      }
+
+    }
+  }
+
+  return view(hh)(
+    {
+      edit: editing,
+      newTodo: newTodo,
+      placeholder: placeholder,
+      value: text || '',
+      onBlur: handleBlur,
+      onKeyDown: handleSubmit
+    }, 
+    onSave
+  )
+}
+
+
+class TodoTextInputCl extends Component {
   static propTypes = {
     onSave: PropTypes.func.isRequired,
     text: PropTypes.string,
@@ -59,7 +97,8 @@ export default class TodoTextInput extends Component {
     }
   }
 
-  render = () => view(hh)({
+  render = () => view(hh)(
+    {
       edit: this.props.editing,
       newTodo: this.props.newTodo,
       placeholder: this.props.placeholder,
