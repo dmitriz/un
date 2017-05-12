@@ -239,7 +239,7 @@ document.body.appendChild(e)
 const actions = mount({ e, reducer, view, initState: 0 })
 ```
 
-## Basic Examples
+## More Examples
 
 The Basic Examples are intentionally made very simple and focused.
 
@@ -253,6 +253,8 @@ The Basic Examples are intentionally made very simple and focused.
 
 [The todos-with-delete example](https://github.com/dmitriz/un/tree/master/examples/todos-with-delete) adds the delete feature to the previous example. It deviates slightly from the traditional todos examples, in which the deletion is done by name, i.e. all todos with the same name are deleted at the same time.
 
+
+### More advanced examples are in active development, help and contributions are welcome!
 
 
 ## Inspirations (incomplete and in random order)
