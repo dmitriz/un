@@ -49,21 +49,21 @@ Here is a usage example. Instead of learning new API, new framework or long set 
 
 
 ```js
-const mount = createMount({	
+const mount = createMount({ 
 
-	// your favorite stream factory
-	// mithril/stream, TODO: flyd, most, xstream
-	createStream: require("mithril/stream"),
+  // your favorite stream factory
+  // mithril/stream, TODO: flyd, most, xstream
+  createStream: require("mithril/stream"),
 
-	// your favorite element creator
-	// mitrhil, TODO: (React|Preact|Inferno).createElement, snabbdom/h, hyperscript
-	createElement: require('mithril'),
+  // your favorite element creator
+  // mitrhil, TODO: (React|Preact|Inferno).createElement, snabbdom/h, hyperscript
+  createElement: require('mithril'),
 
-	// your favorite create tags helpers (optional)
-	createTags: require('hyperscript-helpers'),
+  // your favorite create tags helpers (optional)
+  createTags: require('hyperscript-helpers'),
 
-	// mithril.render, TODO: (React|Preact|Inferno).render, snabbdom-patch, replaceWith
-	createRender: element => vnode => require('mithril').render(element, vnode)
+  // mithril.render, TODO: (React|Preact|Inferno).render, snabbdom-patch, replaceWith
+  createRender: element => vnode => require('mithril').render(element, vnode)
 })
 ```
 
@@ -86,7 +86,7 @@ So we call `mount` with 4 basic properties:
 
 ```js
 const view = h => (state, dispatch) => 
-	h('div', `Hello World, your ${state} is wonderful!`)
+  h('div', `Hello World, your ${state} is wonderful!`)
 ```
 
 where `h` stands for our favorite element creator passed to `createMount`. We find the [`hyperscript`](https://github.com/hyperhype/hyperscript) API supported by many libraries (e.g. Mithril, Snabbdom, or [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript)) most convenient, but also using JSX should be possible at it is equivalent to the `React.createElement` calls.
@@ -95,7 +95,7 @@ Or use the `createTags` helpers (like [`hyperscript-helpers`](https://github.com
 
 ```js
 const view = ({ div }) => (state, dispatch) => 
-	div(`Hello World, your ${state} is wonderful!`)
+  div(`Hello World, your ${state} is wonderful!`)
 ```
 
 The other two parameters of the `view` are `dispatch` and `state` that match the types (or more precisely, interfaces) of the `action` and the `state` parameters of the `reducer`. (Note how the `view` signature matches the one of the `reducer`. Further, it also matches the [native JS `Array.prototype.reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) as well as [the general `reduce` method](http://ramdajs.com/0.18.0/docs/#reduce) signatures, the latter provided by the [Foldable Typeclass](https://github.com/fantasyland/fantasy-land#foldable).)
@@ -132,8 +132,8 @@ The `un` mount function, created as described above,
 returns for every uncomponent, the object 
 ```js
 { 
-	states: streamOfStates, 
-	actions: streamOfActions 
+  states: streamOfStates, 
+  actions: streamOfActions 
 }
 ```
 holding the streams of the actions and the states
@@ -168,7 +168,7 @@ and the reducer simply adds the action value to the state:
 
 ```js
 const reducer = (state, action) => 
-	state + action
+  state + action
 ```
 
 ### Pure view function
@@ -179,20 +179,20 @@ can reuse all the arguments of the outside function:
 ```js
 const view = ({ button }) => (state, dispatch) => {
 
-	const change = amount => 
-		button( 
-			{onclick: () => dispatch(amount)}, 
-			(amount > 0) 
-				? `+${amount}` 
-				: `-${-amount}`
-			)
+  const change = amount => 
+    button( 
+      {onclick: () => dispatch(amount)}, 
+      (amount > 0) 
+        ? `+${amount}` 
+        : `-${-amount}`
+      )
 
-	return [	
-		`Increasing by 5 every second: `,
-		change(10),
-		` ${state} `,
-		change(-10)
-	]
+  return [  
+    `Increasing by 5 every second: `,
+    change(10),
+    ` ${state} `,
+    change(-10)
+  ]
 }
 ```
 
@@ -213,21 +213,21 @@ const createMount = require('un.js')
 
 // or React.createElement
 
-const mount = createMount({	
+const mount = createMount({ 
 
-	// your favorite stream factory
-	// TODO: flyd, most, xstream
-	createStream: require("mithril/stream"),
+  // your favorite stream factory
+  // TODO: flyd, most, xstream
+  createStream: require("mithril/stream"),
 
-	// your favorite element creator
-	// TODO: (React|Preact|Inferno).createElement, snabbdom/h, hyperscript
-	createElement: require('mithril'),
+  // your favorite element creator
+  // TODO: (React|Preact|Inferno).createElement, snabbdom/h, hyperscript
+  createElement: require('mithril'),
 
-	// your favorite create tags helpers
-	createTags: require('hyperscript-helpers'),
+  // your favorite create tags helpers
+  createTags: require('hyperscript-helpers'),
 
-	// TODO: (React|Preact|Inferno).render, snabbdom-patch, replaceWith
-	createRender: element => vnode => require('mithril').render(element, vnode)
+  // TODO: (React|Preact|Inferno).render, snabbdom-patch, replaceWith
+  createRender: element => vnode => require('mithril').render(element, vnode)
 })
 
 // create dom element
