@@ -9,9 +9,9 @@
 # un.js
 unframework for universal uncomponents
 
-> We do not think in terms of reusable components. 
-Instead, we focus on reusable functions. 
-We create reusable views by breaking out helper functions to display our data.
+> **We do not think in terms of reusable components.** 
+Instead, we focus on reusable *functions*.
+It is a functional language after all!
 -- [Scaling The Elm Architecture](https://guide.elm-lang.org/reuse/)
 
 ### Contributions and Feedback are highly welcome!
