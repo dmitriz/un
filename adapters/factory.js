@@ -3,12 +3,11 @@
  * (can be used to provide additional instance methods)
  */ 
 const setInstanceProto = protoObj => Factory =>
-	(...args) => {
-		let factoryObj = Factory(...args)
-		let oldProto = Object.getPrototypeOf(factoryObj)
-		let newObj = Object.create(protoObj)
-		Object.assign(newObj, factoryObj)
-		return newObj
-	}
+  (...args) => {
+    const factoryObj = Factory(...args)
+    let newObj = Object.create(protoObj)
+    Object.assign(newObj, factoryObj)
+    return newObj
+  }
 
 module.exports = { setInstanceProto }
