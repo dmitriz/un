@@ -19,9 +19,10 @@ const InheritedFactory = Object.create(Factory)
 // const TransformedInheritedFactory = methodToFactory('method')(InheritedFactory)
 
 const testFactory = Factory => {
-	const TransformedFactory = alias('from', 'to')(Factory)
+	// const TransformedFactory = alias('from', 'to')(Factory)
+	const TransformedFactory = methodToFactory('method')(Factory)
 
-	describe(`Factory transformer`, () => {
+	xdescribe(`Factory transformer`, () => {
 
 		it('should get called with all arguments', () => {
 			expect(Factory.method()).toEqual([])

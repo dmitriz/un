@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Sat May 13 2017 03:20:44 GMT+0100 (IST)
+// Generated on Thu May 11 2017 03:51:34 GMT+0100 (IST)
 
 module.exports = function(config) {
   config.set({
@@ -19,20 +19,23 @@ module.exports = function(config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: [
-      'browserify',
-      'source-map-support', 
-      'jasmine'
+        'browserify',
+        'source-map-support', 
+        'jasmine'
     ],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'adapters/*_test.js'
+      'adapters/*_test.js',
+      // '**/*_test.js',
     ],
 
 
     // list of files to exclude
     exclude: [
+      'examples/**',
+      'node_modules/**',
     ],
 
 
@@ -60,6 +63,8 @@ module.exports = function(config) {
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
+    // logLevel: config.LOG_ERROR,
+    // logLevel: config.LOG_DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -68,7 +73,10 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: [ 
+      'Chrome',
+      // 'Firefox'
+    ],
 
 
     // Continuous Integration mode
