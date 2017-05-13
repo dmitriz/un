@@ -1,13 +1,18 @@
 ```
     __   __  _____   
-   / /  / / / ___ \   
-  / /  / / / /  / /      (Logo inpiration from  MostJS https://github.com/cujojs/most)
+   / /  / / / ___ \     (Logo inpiration from  MostJS https://github.com/cujojs/most)
+  / /  / / / /  / /    
  / /__/ / / /  / /      
  \_____/ /_/  /_/
 ```
 
 # un.js
 unframework for universal uncomponents
+
+> We do not think in terms of reusable components. 
+Instead, we focus on reusable functions. 
+We create reusable views by breaking out helper functions to display our data.
+-- [Scaling The Elm Architecture](https://guide.elm-lang.org/reuse/)
 
 ### Contributions and Feedback are highly welcome!
 
