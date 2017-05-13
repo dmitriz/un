@@ -146,10 +146,10 @@ A basic example below is demonstrating how the action stream can be externally d
 The `un` mount function, created as described above, 
 returns for every uncomponent, the object 
 ```js
-{ 
+const { 
   states: streamOfStates, 
   actions: streamOfActions 
-}
+} = mount(...)
 ```
 holding the state and action streams
 (we like to refer to streams by plurals to emphasize their collection nature).
