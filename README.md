@@ -113,7 +113,17 @@ In `React` the role of the `view` would be played by the component `render` meth
 
 - `initState`: The state to initialise our uncomponent.
 
-Why "uncomponent"? Because there isn't really much of a "component", the `reducer` and the `view` are just two plain functions and the initial state is a plain object.
+
+## Uncomponents
+
+Why "uncomponent"? Because there isn't really much of a "component", the `reducer` and the `view` are just two plain functions and the initial state is a plain object. 
+
+### So what is called "uncomponent"?
+
+- Native JavaScript functions. [Or generators](https://github.com/funkia/turbine/). Or native object holding a few functions.
+- No proprietary syntax. Every part of the framework, library, package is hidden away from the user. In the configuration. 
+- Pluggable into any framework. Or into no framework. This is what configuration is for.
+
 
 
 ## Streams
