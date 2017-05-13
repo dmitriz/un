@@ -5,6 +5,7 @@
 const setInstanceProto = protoObj => Factory =>
 	(...args) => {
 		let factoryObj = Factory(...args)
+		let oldProto = Object.getPrototypeOf(factoryObj)
 		let newObj = Object.create(protoObj)
 		Object.assign(newObj, factoryObj)
 		return newObj
