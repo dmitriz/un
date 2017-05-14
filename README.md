@@ -25,7 +25,7 @@ $ yarn add un.js (or npm install un.js -S)
 ```
 and try the [active counter example](https://github.com/dmitriz/un/tree/master/examples/active-counter) or read the introduction below
 
-## Philosophy
+## Philosophy and Universality
 
 - Write your business logic as pure functions with no external dependencies
 - No side-effects, testable by your favorite test runners
