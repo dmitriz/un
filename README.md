@@ -18,10 +18,18 @@ It is a functional language after all!
 
 ## Quick start
 
-Install with
+Install [un.js](https://www.npmjs.com/package/un.js) with
 
 ```sh
-$ yarn add un.js (or npm install un.js -S)
+$ yarn add un.js
+```
+or with
+```sh
+npm install un.js -S
+```
+or with [`pnpm`](https://github.com/pnpm/pnpm)
+```sh
+pnpm install un.js -S
 ```
 and try the [active counter example](https://github.com/dmitriz/un/tree/master/examples/active-counter) or read the introduction below
 
