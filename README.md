@@ -7,7 +7,7 @@
 ```
 
 # un.js
-unframework for universal uncomponents
+Unframework for Universal Uncomponents
 
 > **We do not think in terms of reusable components.** 
 Instead, we focus on reusable *functions*.
