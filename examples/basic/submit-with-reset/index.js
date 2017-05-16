@@ -14,7 +14,7 @@ const style = {width: '100%'}
 
 // pure with no dependencies
 const view = ({ form, input, p }) => 
-	({inputVal, submitted, changed }, dispatch) => [
+	({ inputVal, submitted, changed }, dispatch) => [
 		`Welcome to my Submit: `,
 		`Type and hit ENTER: `,
 		form({
