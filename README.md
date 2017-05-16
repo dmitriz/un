@@ -310,6 +310,7 @@ The [Redux](http://redux.js.org/) and [Elm](https://guide.elm-lang.org/architect
 
 [Meiosis](https://github.com/foxdonut/meiosis)
 
+[redux-react-local](https://github.com/threepointone/redux-react-local)
 
 To be extended...
 
