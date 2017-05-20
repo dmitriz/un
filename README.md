@@ -45,6 +45,8 @@ and try the [active counter example](https://github.com/dmitriz/un/tree/master/e
 
 ## Why unframework?
 
+
+
 - Frameworks try to provide and cater for everything, `un` tries the opposite - give you the maximal possible freedom.
 
 - Frameworks try to tell you exactly what to do, `un` tries the opposite - staying out of your way.
@@ -98,6 +100,8 @@ So we call `mount` with 4 basic properties:
 - `view`: Plain pure function taking `dispatcher` and `state` and returning new `state`, the state can be global, narrowed down, or completely local to the uncomponent, to cater for the [fractal architecture](https://staltz.com/unidirectional-user-interface-architectures.html). The view function dispatches actions just like in Redux and returns a virtual or real DOM element, depending on the library used in configuring the `mount`. But to be completely pure with no external dependency, the `view` must include the element creator factory as one of its parameters:
 
 ```js
+// all parameters are explicit, no dependencies, no magic
+// can be tested as pure dumb function in any environment
 const view = h => (state, dispatch) => 
   h('div', `Hello World, your ${state} is wonderful!`)
 ```
@@ -107,6 +111,8 @@ where `h` stands for our favorite element creator passed to `createMount`. We fi
 Or use the `createTags` helpers (like [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers)) that you can conveniently destructure inside the view:
 
 ```js
+// again, no dependencies, only function parameters, 
+// all inputs are instantly visible, no need to jump elsewhere
 const view = ({ div }) => (state, dispatch) => 
   div(`Hello World, your ${state} is wonderful!`)
 ```
