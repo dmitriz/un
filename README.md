@@ -18,7 +18,7 @@ It is a functional language after all!
 
 ## Quick start
 
-Install [un.js](https://www.npmjs.com/package/un.js) with
+Install [the `un.js` package](https://www.npmjs.com/package/un.js) with
 
 ```sh
 $ yarn add un.js
