@@ -168,12 +168,12 @@ const {
 holding the state and action streams
 (we like to refer to streams by plurals to emphasize their collection nature).
 
-That means, you can conveniently add any complex behavior
+That means, you can conveniently add any complex behavior (such as loading external data)
 to your uncomponent by piping the external actions into its action stream,
 or you can attach an external subscriber to the state stream,
 to be updated on any state changes in a reactive fashion.
 
-[The active-counter example](https://github.com/dmitriz/un/tree/master/examples/active-counter) demonstrates this feature.
+[The active-counter example](https://github.com/dmitriz/un/tree/master/examples/active-counter) demonstrates this feature, see below.
 
 
 ### `un` reactive vision
@@ -201,6 +201,11 @@ const reducer = (state, action) =>
   state + action
 ```
 
+By making the state local and avoiding giving specific names to the actions,
+we can make the reducer function more of a general purpose and reusable.
+Just like a function in [`Ramda`](http://ramdajs.com/) or similar library.
+
+
 ### Pure view function
 
 Our view function example here demonstrates how a function helper inside
@@ -209,6 +214,7 @@ can reuse all the arguments of the outside function:
 ```js
 const view = ({ button }) => (state, dispatch) => {
 
+  // reusing the button function
   const change = amount => 
     button( 
       {onclick: () => dispatch(amount)}, 
@@ -235,7 +241,52 @@ the `amount` value is written into the `action` stream.
 That is essentially what the `dispatch` function does.
 
 
-### Drivers
+### Use with HTTP responses, Promises and other external actions
+
+In addition to user's actions, the counter is being updated 
+from the application via this code:
+
+```js
+const delayedConstant = (val, delay) => stream => {
+  setInterval(() => stream(val), delay)
+  return stream
+}
+delayedConstant(5, 1000)(actions)
+```
+
+The `actions` stream here is exported from the `un` `mount` function
+and gives access to the external drivers.
+The simple periodic values here are for demonstration purposes.
+They can be replaced by any HTTP request or any value returned by a JS Promise,
+or can be even subscribed to another stream, such as event stream from any event:
+
+```js
+// the response value from the promise will appear in the actions stream
+// once the promise is resolved or the error object if the promise is rejected
+actions(fetch(someUrl))
+
+// every value from the `externalStream` 
+// will be passed down the actions stream in real time
+externalStream.map(actions)
+```
+
+The functionality here is based on the 
+[getter-setter syntax of the `flyd` stream library](https://github.com/paldepind/flyd#creating-streams) and [the way promises are treated](https://github.com/paldepind/flyd#using-promises-for-asynchronous-operations).
+However, any another stream library with stream updates functionality
+(e.g. [`mostjs-subject`](https://github.com/mostjs-community/subject))
+can be used instead.
+
+Once subscribed as above, all values will be automatically
+passed to the reducer as action values.
+That way all business logic needed can be put 
+as pure function updating the state inside the reducer.
+
+The rest is full automatic: reducer runs on every new action,
+the state is updated and passed to the view
+that will be sent to the renderer to update the dom.
+
+
+### The mount function
 
 ```js
 // the only method you ever use from 'un'
@@ -267,6 +318,7 @@ document.body.appendChild(e)
 // mount our live uncomponent and get back its writeable stream of actions
 const actions = mount({ e, reducer, view, initState: 0 })
 ```
+
 
 ## More Examples
 
