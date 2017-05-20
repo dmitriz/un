@@ -134,7 +134,7 @@ Why "uncomponent"? Because there isn't really much of a "component", the `reduce
 
 ### So what is called "uncomponent"?
 
-- Native JavaScript functions. [Or generators](https://github.com/funkia/turbine/). Or native object holding a few functions.
+- Native JavaScript functions. [Or native generators](https://github.com/funkia/turbine/#understanding-generator-functions). Or native object holding a few functions.
 - No proprietary syntax. Every part of the framework, library, package is hidden away from the user. In the configuration. 
 - Pluggable into any framework. Or into no framework. This is what configuration is for.
 
