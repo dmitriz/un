@@ -31,7 +31,7 @@ or with [`pnpm`](https://github.com/pnpm/pnpm)
 ```sh
 pnpm install un.js -S
 ```
-and try the [active counter example](https://github.com/dmitriz/un/tree/master/examples/active-counter) or read the introduction below
+and try the [active counter example](https://github.com/dmitriz/un/tree/master/examples/active-counter) or read the introduction below.
 
 ## Philosophy and Universality
 
@@ -130,7 +130,7 @@ In `React` the role of the `view` would be played by the component `render` meth
 
 ## Uncomponents
 
-Why "uncomponent"? Because there isn't really much of a "component", the `reducer` and the `view` are just two plain functions and the initial state is a plain object. 
+Why "uncomponent"? Because there isn't really much of a "component", the `reducer` and the `view` are just two plain functions and the initial state is a plain value. 
 
 ### So what is called "uncomponent"?
 
@@ -370,5 +370,5 @@ The [Redux](http://redux.js.org/) and [Elm](https://guide.elm-lang.org/architect
 
 [redux-react-local](https://github.com/threepointone/redux-react-local)
 
-To be extended...
+...To be extended...
 
