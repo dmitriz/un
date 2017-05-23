@@ -355,9 +355,7 @@ The [Mithril framework](https://mithril.js.org/index.html)
 
 The [simple but powerful `flyd` stream library](https://github.com/paldepind/flyd)
 
-The new [Functional Reactive `Turbine` framework](https://github.com/funkia/turbine) and the oder
-
-[Functional Frontend Architecture](https://github.com/paldepind/functional-frontend-architecture)
+The new [Functional Reactive `Turbine` framework](https://github.com/funkia/turbine) and the oder [Functional Frontend Architecture](https://github.com/paldepind/functional-frontend-architecture)
 by @paldepind
 
 The [Snabbdom virtual dom library](https://github.com/snabbdom/snabbdom) and the [broader Hyperscript Ecosystem](https://github.com/hyperhype/awesome-hyperscript)
