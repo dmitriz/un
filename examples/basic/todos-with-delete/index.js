@@ -3,16 +3,15 @@
 
 // compute new state
 const reducer = (state = {}, { type, todo } = {}) => {
-	const { submitted } = state
+	const { todos } = state
 	return {
 		'ADD': {
 			title: ``,
-			submitted: submitted.concat([todo]),
-			changed: true
+			todos: todos.concat([todo]),
 		},
 		'DELETE': Object.assign({}, {
 			// delete by title!
-			submitted: submitted.filter(t => t !== todo)
+			todos: todos.filter(t => t !== todo)
 		})
 	}[type] || state
 }
@@ -21,9 +20,9 @@ const reducer = (state = {}, { type, todo } = {}) => {
 
 // pure with no dependencies
 const view = ({ div, header, form, input, label, p, ul, li, section, h1, button }) =>
-	({ title, submitted, changed }, dispatch) => {
+	({ title, todos }, dispatch) => {
 
-	const NewTodoInput = ({ title }) =>
+	const NewTodoInput = ( title ) =>
 		header('.header', [
 			h1("todos"),
 			form({
@@ -42,7 +41,7 @@ const view = ({ div, header, form, input, label, p, ul, li, section, h1, button 
 			])
 		])
 
-	const Todo = (todo) =>
+	const Todo = todo =>
 		li([
 			div(".view", [
 				label(todo),
@@ -52,17 +51,17 @@ const view = ({ div, header, form, input, label, p, ul, li, section, h1, button 
 			]),
 		])
 
-	const Main = ({ submitted }) =>
+	const Main = todos =>
 		section("#main", {
-			style: {display: submitted.length > 0 ? "" : "none"}
+			style: {display: todos.length > 0 ? "" : "none"}
 		}, [
-			ul('#todo-list', submitted.map(todo => Todo(todo)))
+			ul('#todo-list', todos.map(todo => Todo(todo)))
 		])
 
 
 	return [
-		NewTodoInput({ title }),
-		Main({ submitted })
+		NewTodoInput( title ),
+		Main( todos )
 	]
 }
 
@@ -81,7 +80,6 @@ mount({
 	view,
 	initState: {
 		title: ``,
-		submitted: [],
-		changed: false
+		todos: [],
 	}
 })
