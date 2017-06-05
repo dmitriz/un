@@ -19,8 +19,7 @@ const reducer = ({ todos } = {}, { type, todo } = {}) => ({
 const view = ({ div, form, input, label, ul, li, h1, button }) =>
 	({ newTitle, todos }, dispatch) => {
 
-	const NewTodoInput = newTitle => [
-		h1("my todos"),
+	const NewTodoInput = newTitle =>
 		form({
 			onsubmit: e => {
 				e.preventDefault()
@@ -35,7 +34,6 @@ const view = ({ div, form, input, label, ul, li, h1, button }) =>
 				value: newTitle,
 			})
 		])
-  ]
 
 	const Todo = todo =>
 		li([
@@ -49,6 +47,7 @@ const view = ({ div, form, input, label, ul, li, h1, button }) =>
 		ul('#todo-list', todos.map(Todo))
 
 	return [
+    h1("my todos"),
 		NewTodoInput( newTitle ),
 		Main( todos ),
 	]
