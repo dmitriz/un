@@ -37,7 +37,7 @@ const view = ({ div, form, input, label, ul, li, h1, button }) =>
 
 	const Todo = todo =>
 		li([
-			label( todo ),
+			label(todo),
 			button(".destroy", {
 				onclick: () => dispatch({ type: 'DELETE', todo })
 			}),
@@ -48,8 +48,8 @@ const view = ({ div, form, input, label, ul, li, h1, button }) =>
 
 	return [
     h1("my todos"),
-		NewTodoInput( newTitle ),
-		Main( todos ),
+		NewTodoInput(newTitle),
+		Main(todos),
 	]
 }
 
