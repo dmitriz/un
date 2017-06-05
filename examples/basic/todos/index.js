@@ -1,4 +1,4 @@
-// uncomponent - the pair of functions, 
+// uncomponent - the pair of functions,
 // no imports - no external dependencies!
 
 // compute new state
@@ -13,7 +13,7 @@ const reducer = ({ submitted } = {}, title) => ({
 const style = {width: '100%'}
 
 // pure with no dependencies
-const view = ({ form, input, p, li }) => 
+const view = ({ form, input, ul, li }) =>
 	({ title, submitted, changed }, dispatch) => [
 		`Enter your Todo: `,
 		form({
@@ -32,10 +32,10 @@ const view = ({ form, input, p, li }) =>
 				value: title
 			})
 		]),
-		changed 
+		changed
 			? `Thank you, here are your Todos:`
 			: `You have no Todos`,
-		p({style: {
+		ul({style: {
 			color: changed ? 'blue' : 'gray'
 		}}, submitted.map(key => li(` ${key} `)))
 	]
@@ -49,10 +49,10 @@ const el = document.createElement('div')
 document.body.appendChild(el)
 
 // mount our live uncomponent
-mount({ 
-	el, 
-	reducer, 
-	view, 
+mount({
+	el,
+	reducer,
+	view,
 	initState: {
 		submitted: [],
 		changed: false

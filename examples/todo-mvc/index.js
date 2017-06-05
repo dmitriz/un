@@ -129,7 +129,8 @@ var TodosClousure = ({
 				},
         [
           input(".edit", {
-						onupdate: vnode => dispatch.focus(vnode, todo),
+						// onupdate: vnode => dispatch.focus(vnode, todo),
+            value: todo.title,
 						onkeyup: dispatch.save,
 						onblur: dispatch.save
 					}),
