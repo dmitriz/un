@@ -19,11 +19,11 @@ const reducer = (state = {}, { type, todo } = {}) => {
 
 
 // pure with no dependencies
-const view = ({ div, header, form, input, label, p, ul, li, h1, button }) =>
+const view = ({ div, form, input, label, ul, li, h1, button }) =>
 	({ newTitle, todos }, dispatch) => {
 
 	const NewTodoInput = newTitle => [
-		h1("todos"),
+		h1("my todos"),
 		form({
 			onsubmit: e => {
 				e.preventDefault()
