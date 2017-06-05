@@ -9,10 +9,10 @@ const reducer = (state = {}, { type, todo } = {}) => {
 			newTitle: ``,
 			todos: todos.concat([todo]),
 		},
-		'DELETE': Object.assign({}, {
-			// delete by newTitle!
+		'DELETE': {
+			// delete by name!
 			todos: todos.filter(t => t !== todo)
-		})
+		}
 	}[type] || state
 }
 
