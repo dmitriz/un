@@ -2,19 +2,16 @@
 // no imports - no external dependencies!
 
 // compute new state
-const reducer = (state = {}, { type, todo } = {}) => {
-	const { todos } = state
-	return {
-		'ADD': {
-			newTitle: ``,
-			todos: todos.concat([todo]),
-		},
-		'DELETE': {
-			// delete by name!
-			todos: todos.filter(t => t !== todo)
-		},
-	}[type] || state
-}
+const reducer = ({ todos } = {}, { type, todo } = {}) => ({
+	'ADD': {
+		newTitle: ``,
+		todos: todos.concat([todo]),
+	},
+	'DELETE': {
+		// delete by name!
+		todos: todos.filter(t => t !== todo)
+	},
+}[type])
 
 
 
