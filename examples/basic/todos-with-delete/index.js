@@ -1,4 +1,4 @@
-// uncomponent - the pair of functions, 
+// uncomponent - the pair of functions,
 // no imports - no external dependencies!
 
 // compute new state
@@ -8,7 +8,7 @@ const reducer = (state = {}, { type, todo } = {}) => {
 		'ADD': {
 			title: ``,
 			submitted: submitted.concat([todo]),
-			changed: true		
+			changed: true
 		},
 		'DELETE': Object.assign({}, {
 			// delete by title!
@@ -20,16 +20,17 @@ const reducer = (state = {}, { type, todo } = {}) => {
 
 
 // pure with no dependencies
-const view = ({ div, header, form, input, label, p, ul, li, section, h1, button }) => 
+const view = ({ div, header, form, input, label, p, ul, li, section, h1, button }) =>
 	({ title, submitted, changed }, dispatch) => {
 
-	const NewTodoInput = ({ title }) => 
+	const NewTodoInput = ({ title }) =>
 		header('.header', [
 			h1("todos"),
 			form({
 				onsubmit: e => {
 					e.preventDefault()
-					dispatch({type: 'ADD', todo: e.target.in.value})
+          const todo = e.target.in.value.trim()
+					todo && dispatch({ type: 'ADD', todo })
 				}
 			}, [
 				input('#new-todo', {
@@ -74,10 +75,10 @@ const el = document.createElement('div')
 document.body.appendChild(el)
 
 // mount our live uncomponent
-mount({ 
-	el, 
-	reducer, 
-	view, 
+mount({
+	el,
+	reducer,
+	view,
 	initState: {
 		title: ``,
 		submitted: [],
