@@ -6,11 +6,11 @@ const reducer = (state = {}, { type, todo } = {}) => {
 	const { todos } = state
 	return {
 		'ADD': {
-			title: ``,
+			newTitle: ``,
 			todos: todos.concat([todo]),
 		},
 		'DELETE': Object.assign({}, {
-			// delete by title!
+			// delete by newTitle!
 			todos: todos.filter(t => t !== todo)
 		})
 	}[type] || state
@@ -20,9 +20,9 @@ const reducer = (state = {}, { type, todo } = {}) => {
 
 // pure with no dependencies
 const view = ({ div, header, form, input, label, p, ul, li, section, h1, button }) =>
-	({ title, todos }, dispatch) => {
+	({ newTitle, todos }, dispatch) => {
 
-	const NewTodoInput = ( title ) =>
+	const NewTodoInput = newTitle =>
 		header('.header', [
 			h1("todos"),
 			form({
@@ -36,7 +36,7 @@ const view = ({ div, header, form, input, label, p, ul, li, section, h1, button 
 					name: 'in',
 					placeholder: 'What needs to be done?',
 					autofocus: true,
-					value: title
+					value: newTitle
 				})
 			])
 		])
@@ -60,7 +60,7 @@ const view = ({ div, header, form, input, label, p, ul, li, section, h1, button 
 
 
 	return [
-		NewTodoInput( title ),
+		NewTodoInput( newTitle ),
 		Main( todos )
 	]
 }
@@ -79,7 +79,7 @@ mount({
 	reducer,
 	view,
 	initState: {
-		title: ``,
+		newTitle: ``,
 		todos: [],
 	}
 })
