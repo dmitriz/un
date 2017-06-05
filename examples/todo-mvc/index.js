@@ -1,5 +1,4 @@
 // index.js -- the main app source file
-const css = require('todomvc-app-css/index.css')
 
 const m = require('mithril')
 const hh = require('hyperscript-helpers')(m)
@@ -22,7 +21,7 @@ var state = {
 	remaining: 0,
 	todosByStatus: [],
 
-	createTodo: title => 
+	createTodo: title =>
 		state.todos.unshift({title: title.trim(), completed: false}),
 
 	setStatuses: completed => {
@@ -74,7 +73,7 @@ var state = {
 
 
 
-var TodosClousure = ({ 
+var TodosClousure = ({
 	div, span, h1, a, input, label, button, ul, li, header, section, footer, strong
 }) => ({
 	add: e => {
@@ -95,7 +94,7 @@ var TodosClousure = ({
 			vnode.dom.selectionStart = vnode.dom.selectionEnd = todo.title.length
 		}
 	},
-	save: e => (e.keyCode === 13 || e.type === "blur") 
+	save: e => (e.keyCode === 13 || e.type === "blur")
 		? state.dispatch("update", [e.target.value])
 		: (e.keyCode === 27) && state.dispatch("reset")
 		,
@@ -107,15 +106,15 @@ var TodosClousure = ({
 	view: vnode => {
 		var ui = vnode.state
 
-		var TodoTextInput = dispatch => 
+		var TodoTextInput = dispatch =>
 			input("#new-todo", {
 				placeholder: 'What needs to be done?',
-				autofocus: true, 
+				autofocus: true,
 				onkeypress: dispatch
 			})
 
 
-		var Header = dispatch => 
+		var Header = dispatch =>
 			header(".header", [
 				h1("todos"),
 				TodoTextInput(dispatch)
@@ -124,20 +123,20 @@ var TodosClousure = ({
 		var TodoItem = (todo, dispatch) =>
 			li(
 				{
-					class: (todo.completed ? "completed" : "") 
-						+ " " 
+					class: (todo.completed ? "completed" : "")
+						+ " "
 						+ (todo === state.editing ? "editing" : "")
-				}, 
-				state.editing ? 
+				},
+				state.editing ?
 					input(".edit", {
-						onupdate: vnode => dispatch.focus(vnode, todo), 
-						onkeyup: dispatch.save, 
+						onupdate: vnode => dispatch.focus(vnode, todo),
+						onkeyup: dispatch.save,
 						onblur: dispatch.save
 					}) :
 					div(".view", [
 						input(".toggle", {
 							type: 'checkbox',
-							checked: todo.completed, 
+							checked: todo.completed,
 							onclick: () => dispatch.toggle(todo)
 						}),
 						label({
@@ -155,7 +154,7 @@ var TodosClousure = ({
 			}, [
 				input("#toggle-all", {
 					type: 'checkbox',
-					checked: state.remaining === 0, 
+					checked: state.remaining === 0,
 					onclick: dispatch
 				}),
 				label({
@@ -163,31 +162,31 @@ var TodosClousure = ({
 					onclick: dispatch
 				}, "Mark all as complete"),
 
-				ul("#todo-list", state.todosByStatus.map(todo => 
+				ul("#todo-list", state.todosByStatus.map(todo =>
 					TodoItem(todo, ui)
 				)),
 			])
 
 		var routes = ['/', '/active', '/completed']
 
-		var routeLabels = { 
-			'/': 'All', 
-			'/active': 'Active', 
-			'/completed': 'Completed' 
+		var routeLabels = {
+			'/': 'All',
+			'/active': 'Active',
+			'/completed': 'Completed'
 		}
 
-		var FilterLink = route => 
+		var FilterLink = route =>
 			li(
 				a({
 					href: route,
-					oncreate: m.route.link, 
+					oncreate: m.route.link,
 					class: state.showing === route ? "selected" : ""
 				}, routeLabels[route])
 			)
 
 		var Filter = (state, dispatch) =>
 		 	footer("#footer", [
-				span("span#todo-count", [
+				span("#todo-count", [
 					strong(state.remaining),
 					state.remaining === 1 ? " item left" : " items left",
 				]),
@@ -199,13 +198,15 @@ var TodosClousure = ({
 				button("#clear-completed", {
 					onclick: () => dispatch("clear")
 				}, "Clear completed"),
-			]) 
+			])
 
 		return [
 			Header(ui.add),
 			MainSection(state, ui.toggleAll),
-			state.todos.length ? Filter(state, state.dispatch) : null,
-		]	
+			state.todos.length
+        ? Filter(state, state.dispatch)
+        : null,
+		]
 	}
 })
 
