@@ -127,12 +127,12 @@ var TodosClousure = ({
 						+ " "
 						+ (todo === state.editing ? "editing" : "")
 				},
-				state.editing ?
-					input(".edit", {
+        [
+          input(".edit", {
 						onupdate: vnode => dispatch.focus(vnode, todo),
 						onkeyup: dispatch.save,
 						onblur: dispatch.save
-					}) :
+					}),
 					div(".view", [
 						input(".toggle", {
 							type: 'checkbox',
@@ -146,7 +146,8 @@ var TodosClousure = ({
 							onclick: () => state.dispatch("destroy", [todo])
 						}),
 					])
-				)
+        ]
+			)
 
 		var MainSection = (state, dispatch) =>
 			section("#main", {
@@ -201,7 +202,7 @@ var TodosClousure = ({
 			])
 
 		return [
-			Header(ui.add),
+			Header(vnode.state.add),
 			MainSection(state, ui.toggleAll),
 			state.todos.length
         ? Filter(state, state.dispatch)
