@@ -106,7 +106,7 @@ const view = h => (state, dispatch) =>
   h('div', `Hello World, your ${state} is wonderful!`)
 ```
 
-where `h` stands for our favorite element creator passed to `createMount`. We find the [`hyperscript`](https://github.com/hyperhype/hyperscript) API supported by many libraries (e.g. Mithril, Snabbdom, or [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript)) most convenient, but also using JSX should be possible at it is equivalent to the `React.createElement` calls.
+where `h` stands for our favorite element creator passed to `createMount`. We find the [`hyperscript`](https://github.com/hyperhype/hyperscript) API supported by many libraries (e.g. Mithril, Snabbdom, or [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript)) most convenient, but using JSX should also be possible as it is equivalent to the `React.createElement` calls.
 
 Or use the `createTags` helpers (like [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers)) that you can conveniently destructure inside the view:
 
