@@ -1,6 +1,6 @@
 ```
     __   __  _____   
-   / /  / / / ___ \   ( Logo inpiration from  MostJS
+   / /  / / / ___ \   ( Logo inspiration from MostJS
   / /  / / / /  / /     https://github.com/cujojs/most )
  / /__/ / / /  / /      
  \_____/ /_/  /_/
@@ -142,9 +142,9 @@ Why "uncomponent"? Because there isn't really much of a "component", the `reduce
 
 ## Streams
 
-Streams are in the core of `un`. [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by Andre Staltz is a great introduction to streams. [`flyd`](https://github.com/paldepind/flyd) is a great minimal but powerful stream library to use, including great examples to see the streams in action. The [Mithril stream library](https://mithril.js.org/stream.html) is even smaller but suffices to let `un` do its job. Note that some libraries, such as [`most`](https://github.com/cujojs/most) distingiush between "pending" and "active" streams, but to make things as simple as possible, all streams in `un` are always active, readable and writeable. 
+Streams are in the core of `un`. [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by Andre Staltz is a great introduction to streams. [`flyd`](https://github.com/paldepind/flyd) is a great minimal but powerful stream library to use, including great examples to see the streams in action. The [Mithril stream library](https://mithril.js.org/stream.html) is even smaller but suffices to let `un` do its job. Note that some libraries, such as [`most`](https://github.com/cujojs/most) distinguish between "pending" and "active" streams, but to make things as simple as possible, all streams in `un` are always active, readable and writeable. 
 
-Despite of their initial complexity, streams model very well the asyncronous processes such as user acton flow, and consequently help to greatly simplify the architecture. The state values are stored directly inside the stream, so no stores such as in Redux are needed.
+Despite of their initial complexity, streams model very well the asynchronous processes such as user acton flow, and consequently help to greatly simplify the architecture. The state values are stored directly inside the stream, so no stores such as in Redux are needed.
 
 Instead of letting the framework do some "magic" behind the scene, when updating the DOM, with `un`, your view listens to its state stream. Whenever the state changes, its new value is passed to any subscriber, or which the view is one. The view function is pure with no side-effects, so all it does is pass the new updated element to the rendering library you provided to
 to `createMount`. It is then the library's responsibility to create the side-effect updating the DOM.
@@ -181,10 +181,10 @@ to be updated on any state changes in a reactive fashion.
 Right now the streams provided by `un` conform to the [Mithril Stream API](https://mithril.js.org/stream.html)
 
 In order to make using `un` as universal and painless as possible, 
-and accessible to broader audience, we would like to facilitate pluging other stream libraries. 
+and accessible to broader audience, we would like to facilitate plugging other stream libraries. 
 So you can use your favorite stream api to control your uncomponents.
 
-### Help and cotributions are welcome!
+### Help and contributions are welcome!
 
 
 
@@ -324,7 +324,7 @@ const actions = mount({ e, reducer, view, initState: 0 })
 
 The Basic Examples are intentionally made very simple and focused.
 
-[The sumbit example](https://github.com/dmitriz/un/tree/master/examples/basic/submit) demonstrates how to attach an simple update action to the `onsubmit` event of the `<form>`.
+[The submit example](https://github.com/dmitriz/un/tree/master/examples/basic/submit) demonstrates how to attach an simple update action to the `onsubmit` event of the `<form>`.
 
 [The submit-with-reset example](https://github.com/dmitriz/un/tree/master/examples/basic/submit-with-reset) in addition resets the input field after submission by providing additional state variable to control it.
 
