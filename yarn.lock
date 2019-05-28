@@ -530,6 +530,11 @@ browserify@^14.0.0:
     vm-browserify "~0.0.1"
     xtend "^4.0.0"
 
+buffer-from@^1.0.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
+  integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
+
 buffer-shims@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/buffer-shims/-/buffer-shims-1.0.0.tgz#9978ce317388c649ad8793028c3477ef044a8b51"
@@ -1865,12 +1870,12 @@ karma-jasmine@2.0.1:
   dependencies:
     jasmine-core "^3.3"
 
-karma-source-map-support@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/karma-source-map-support/-/karma-source-map-support-1.2.0.tgz#1bf81e7bb4b089627ab352ec4179e117c406a540"
-  integrity sha1-G/gee7SwiWJ6s1LsQXnhF8QGpUA=
+karma-source-map-support@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/karma-source-map-support/-/karma-source-map-support-1.4.0.tgz#58526ceccf7e8730e56effd97a4de8d712ac0d6b"
+  integrity sha512-RsBECncGO17KAoJCYXjv+ckIz+Ii9NCi+9enk+rq6XC81ezYkb4/RHE6CTXdA7IOJqoF3wcaLfVG0CPmE5ca6A==
   dependencies:
-    source-map-support "^0.4.1"
+    source-map-support "^0.5.5"
 
 karma@4.1.0:
   version "4.1.0"
@@ -2930,11 +2935,13 @@ source-map-resolve@^0.5.0:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@^0.4.1:
-  version "0.4.15"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.15.tgz#03202df65c06d2bd8c7ec2362a193056fef8d3b1"
+source-map-support@^0.5.5:
+  version "0.5.12"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.12.tgz#b4f3b10d51857a5af0138d3ce8003b201613d599"
+  integrity sha512-4h2Pbvyy15EE02G+JOZpUCmqWJuqrs+sEkzewTm++BPi7Hvn/HwcqLAcNxYAyI0x13CpPPn+kMjl+hplXMHITQ==
   dependencies:
-    source-map "^0.5.6"
+    buffer-from "^1.0.0"
+    source-map "^0.6.0"
 
 source-map-url@^0.4.0:
   version "0.4.0"
@@ -2945,7 +2952,7 @@ source-map@^0.5.6, source-map@~0.5.3:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
-source-map@^0.6.1:
+source-map@^0.6.0, source-map@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
