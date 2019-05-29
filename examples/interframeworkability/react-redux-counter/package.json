@@ -3,19 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "enzyme": "^2.8.0",
+    "enzyme": "^3.9.0",
     "react-addons-test-utils": "^15.3.0",
-    "react-scripts": "^0.9.5"
+    "react-scripts": "^3.0.1"
   },
   "dependencies": {
     "prop-types": "^15.5.8",
-    "react": "^15.5.0",
-    "react-dom": "^15.5.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-hyperscript": "^3.0.0",
-    "react-hyperscript-helpers": "^1.2.0",
-    "react-redux": "^5.0.2",
-    "redux": "^3.5.2",
-    "un.js": "^0.4.1"
+    "react-hyperscript-helpers": "^2.0.0",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1",
+    "un.js": "^0.5.9"
   },
   "scripts": {
     "start": "react-scripts start",
