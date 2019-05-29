@@ -10,6 +10,7 @@ mithril@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.1.tgz#0c98644c90503eec2187f66a851ba4053c4a5d66"
 
-un.js@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.5.1.tgz#c53e8a9915ffc32190628197aa4f9a00d4d01bd2"
+un.js@^0.5.9:
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.5.9.tgz#892076199843867e015760cf1491897d91e12fcf"
+  integrity sha512-uS13MGvJlleNV/rBkyEH6igfvXQZH8PG6HPeVD6n9kKMFSHTpezqXaMyfDPc8aalshye6XDTsDwM/AY9ZinLYQ==

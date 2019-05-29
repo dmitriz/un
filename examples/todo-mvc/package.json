@@ -20,8 +20,8 @@
     "cssify": "^1.0.3",
     "hyperscript-helpers": "^3.0.3",
     "mithril": "^1.1.1",
-    "mithril-stream": "^1.0.0",
+    "mithril-stream": "^2.0.0",
     "todomvc-app-css": "^2.1.0",
-    "un.js": "^0.4.1"
+    "un.js": "^0.5.9"
   }
 }
