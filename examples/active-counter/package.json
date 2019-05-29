@@ -19,6 +19,6 @@
     "flyd": "^0.2.4",
     "hyperscript-helpers": "^3.0.3",
     "mithril": "^1.1.1",
-    "un.js": "^0.5.1"
+    "un.js": "^0.5.9"
   }
 }
