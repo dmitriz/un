@@ -16,7 +16,7 @@
   "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
   "license": "MIT",
   "dependencies": {
-    "browserify-css": "^0.10.1",
+    "browserify-css": "^0.15.0",
     "cssify": "^1.0.3",
     "hyperscript-helpers": "^3.0.3",
     "mithril": "^1.1.1",
