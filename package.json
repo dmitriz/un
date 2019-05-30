@@ -10,7 +10,7 @@
   "scripts": {
     "wdev": "open http://localhost:8080/ && webpack-dev-server",
     "pub": "npm version patch && npm publish && git push",
-    "sync": "git add .; git commit; git pull --rebase && git push",
+    "sync": "git add .; git commit; git pull && git push",
     "test": "karma start"
   },
   "keywords": [],
