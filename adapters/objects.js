@@ -10,4 +10,5 @@ const addProto = protoObj => obj => {
 	// create new object with that prototype
 	const newProto = Object.create(oldProto)
 
+	return newProto
 }

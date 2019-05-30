@@ -39,6 +39,7 @@ const testFactory = Factory => {
 			expect(Object.keys(Factory)).toEqual([])
 		})
 	})
+	return;
 }
 
 ;[Factory, InheritedFactory].map(testFactory)

@@ -8,7 +8,7 @@ const methodToFactory = methodName => Factory => {
 
 	const Transformed = Factory[methodName]
 	// Transformed.prototype = Factory
-	Transformed.__proto__ = Factory
+	Object.setPrototypeOf(Transformed, Factory)
 
 	return Transformed
 }
@@ -21,7 +21,7 @@ const methodToFactory = methodName => Factory => {
 const setInstanceProto = protoObj => Factory =>
 	(...agrs) => {
 		let obj = Factory(...args)
-		obj.__proto__ = protoObj
+		Object.setPrototypeOf(obj, protoObj)
 		return obj
 	}
 	

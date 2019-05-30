@@ -29,7 +29,7 @@ describe('original factory', ()=>{
 
 describe('factory with added proto', ()=>{
 	const obj = SuperFactories[0](55, 'a')
-	const obj1 = SuperFactories[1](55, 'a')
+	// const obj1 = SuperFactories[1](55, 'a')
 
 	it('should preserve object own props', ()=>{
 		expect(obj.a).toBe(55)		
