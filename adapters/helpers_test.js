@@ -42,6 +42,6 @@ const testFactory = Factory => {
 	return;
 }
 
-;[Factory, InheritedFactory].map(testFactory)
+;[Factory, InheritedFactory].forEach(testFactory)
 
 
