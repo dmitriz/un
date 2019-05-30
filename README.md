@@ -13,9 +13,9 @@
 Unframework for Universal Uncomponents
 
 > **We do not think in terms of reusable components.** 
-Instead, we focus on reusable *functions*.
-It is a functional language after all!
--- [Scaling The Elm Architecture](https://guide.elm-lang.org/reuse/)
+>Instead, we focus on reusable *functions*.
+>It is a functional language after all!
+>-- [Scaling The Elm Architecture](https://guide.elm-lang.org/reuse/)
 
 ### Contributions and Feedback are highly welcome!
 
@@ -47,8 +47,6 @@ and try the [active counter example](https://github.com/dmitriz/un/tree/master/e
 
 
 ## Why unframework?
-
-
 
 - Frameworks try to provide and cater for everything, `un` tries the opposite - give you the maximal possible freedom.
 

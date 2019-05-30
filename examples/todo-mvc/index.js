@@ -169,8 +169,6 @@ var TodosClousure = ({
 				)),
 			])
 
-		var routes = ['/', '/active', '/completed']
-
 		var routeLabels = {
 			'/': 'All',
 			'/active': 'Active',

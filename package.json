@@ -29,5 +29,8 @@
   },
   "browserify-shim": {
     "external": "global:External"
+  },
+  "dependencies": {
+    "un.js": "^0.5.9"
   }
 }
