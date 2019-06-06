@@ -2956,6 +2956,13 @@ umd@^3.0.0:
   resolved "https://registry.yarnpkg.com/umd/-/umd-3.0.3.tgz#aa9fe653c42b9097678489c01000acb69f0b26cf"
   integrity sha512-4IcGSufhFshvLNcMCV80UnQVlZ5pMOC8mvNPForqwA4+lzYQuetTESLDQkeLmihq8bRcnpbQa48Wb8Lh16/xow==
 
+un.js@^0.5.10:
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.5.10.tgz#ee4d3e1a4d81c55e98f8f5e073844ed38516ca1d"
+  integrity sha512-I/st2hgFnDd2MxOXd5VH5TS6KlTK3/SIsTknoIKsGueYLNlRm2nOspDoKX3UzN0Jdue2jb67sibcfAXz9KJ2fg==
+  dependencies:
+    un.js "^0.5.9"
+
 un.js@^0.5.9:
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.5.9.tgz#892076199843867e015760cf1491897d91e12fcf"
