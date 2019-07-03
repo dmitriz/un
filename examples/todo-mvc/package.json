@@ -10,7 +10,9 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "budo index.js:build.js --live --open",
-    "build": "browserify index.js -o build.js"
+    "build": "browserify index.js -o build.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [],
   "author": "Dmitri Zaitsev <dmitri14@gmail.com> (https://github.com/dmitriz)",
@@ -22,6 +24,8 @@
     "mithril": "^1.1.1",
     "mithril-stream": "^2.0.0",
     "todomvc-app-css": "^2.1.0",
-    "un.js": "^0.5.9"
-  }
+    "un.js": "^0.5.9",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
