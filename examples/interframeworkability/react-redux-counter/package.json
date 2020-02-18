@@ -13,7 +13,7 @@
     "react-dom": "^16.8.6",
     "react-hyperscript": "^3.0.0",
     "react-hyperscript-helpers": "^2.0.0",
-    "react-redux": "^7.0.3",
+    "react-redux": "^7.2.0",
     "redux": "^4.0.1",
     "un.js": "^0.5.9"
   },
