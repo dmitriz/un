@@ -1,17 +1,17 @@
 dependencies:
   prop-types: 15.7.2
   react: 16.8.6
-  react-dom: 16.8.6
-  react-hyperscript: 3.2.0
-  react-hyperscript-helpers: 2.0.0
-  react-redux: 7.0.3
+  react-dom: 16.8.6_react@16.8.6
+  react-hyperscript: 3.2.0_react@16.8.6
+  react-hyperscript-helpers: 2.0.0_react@16.8.6
+  react-redux: 7.2.0_react@16.8.6+redux@4.0.1
   redux: 4.0.1
   un.js: 0.5.9
 devDependencies:
   enzyme: 3.10.0
-  react-addons-test-utils: 15.6.2
+  react-addons-test-utils: 15.6.2_react-dom@16.8.6
   react-scripts: 3.0.1
-lockfileVersion: 5
+lockfileVersion: 5.1
 packages:
   /@babel/code-frame/7.0.0:
     dependencies:
@@ -1444,8 +1444,15 @@ packages:
   /@babel/runtime/7.4.5:
     dependencies:
       regenerator-runtime: 0.13.2
+    dev: true
     resolution:
       integrity: sha512-TuI4qpWZP6lGOGIuGWtp9sPluqYICmbk8T/1vpSysqJxRPkudh/ofFWyqdcMsDf2s7KvDL4/YHgKyvcS3g9CJQ==
+  /@babel/runtime/7.8.4:
+    dependencies:
+      regenerator-runtime: 0.13.3
+    dev: false
+    resolution:
+      integrity: sha512-neAp3zt80trRVBI1x0azq6c57aNBqYZH8KhMm3TaB7wEI5Q4A2SHfBHE8w9gOhI/lrqxtEbXZgQIrHP+wvSGwQ==
   /@babel/template/7.4.4:
     dependencies:
       '@babel/code-frame': 7.0.0
@@ -5179,12 +5186,12 @@ packages:
     dev: true
     resolution:
       integrity: sha1-0nRXAQJabHdabFRXk+1QL8DGSaE=
-  /hoist-non-react-statics/3.3.0:
+  /hoist-non-react-statics/3.3.2:
     dependencies:
-      react-is: 16.8.6
+      react-is: 16.12.0
     dev: false
     resolution:
-      integrity: sha512-0XsbTXxgiaCDYDIWFcwkmerZPSwywfUqYmwT4jzewKTQSWoE6FCMoUVOeBJWK3E/CrWbxRG3m5GzY4lnIwGRBA==
+      integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
   /hosted-git-info/2.7.1:
     dev: true
     resolution:
@@ -5516,6 +5523,7 @@ packages:
   /invariant/2.2.4:
     dependencies:
       loose-envify: 1.4.0
+    dev: true
     resolution:
       integrity: sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
   /invert-kv/2.0.0:
@@ -6148,6 +6156,9 @@ packages:
       node: '>=6'
     peerDependencies:
       jest-resolve: '*'
+    peerDependenciesMeta:
+      jest-resolve:
+        optional: true
     resolution:
       integrity: sha512-pgFw2tm54fzgYvc/OHrnysABEObZCUNFnhjoRjaVOCN8NYc032/gVjPaHD4Aq6ApkSieWtfKAFQtmDKAmhupnQ==
   /jest-pnp-resolver/1.2.1_jest-resolve@24.8.0:
@@ -6158,6 +6169,9 @@ packages:
       node: '>=6'
     peerDependencies:
       jest-resolve: '*'
+    peerDependenciesMeta:
+      jest-resolve:
+        optional: true
     resolution:
       integrity: sha512-pgFw2tm54fzgYvc/OHrnysABEObZCUNFnhjoRjaVOCN8NYc032/gVjPaHD4Aq6ApkSieWtfKAFQtmDKAmhupnQ==
   /jest-regex-util/24.3.0:
@@ -8734,7 +8748,9 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-4Oz8DUIwdvoa5qMJelxipzi/iJIi40O5cGV1wNYp5hvZP8ZN0T+jiNkL0QepXs+EsQ9XJ8ipEDoiH70ySUJP3Q==
-  /react-addons-test-utils/15.6.2:
+  /react-addons-test-utils/15.6.2_react-dom@16.8.6:
+    dependencies:
+      react-dom: 16.8.6_react@16.8.6
     dev: true
     peerDependencies:
       react-dom: ^15.4.2
@@ -8785,13 +8801,13 @@ packages:
       node: '>=8.10'
     resolution:
       integrity: sha512-pnaeMo/Pxel8aZpxk1WwxT3uXxM3tEwYvsjCYn5R7gNxjhN1auowdcLDzFB8kr7rafAj2rxmvfic/fbac5CzwQ==
-  /react-dom/16.8.6:
+  /react-dom/16.8.6_react@16.8.6:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.7.2
+      react: 16.8.6
       scheduler: 0.13.6
-    dev: false
     peerDependencies:
       react: ^16.0.0
     resolution:
@@ -8800,35 +8816,49 @@ packages:
     dev: true
     resolution:
       integrity: sha512-X1Y+0jR47ImDVr54Ab6V9eGk0Hnu7fVWGeHQSOXHf/C2pF9c6uy3gef8QUeuUiWlNb0i08InPSE5a/KJzNzw1Q==
-  /react-hyperscript-helpers/2.0.0:
+  /react-hyperscript-helpers/2.0.0_react@16.8.6:
+    dependencies:
+      react: 16.8.6
     dev: false
     peerDependencies:
       react: '>=0.13.0'
     resolution:
       integrity: sha512-nkWZ7GBDGD4qWnIJo+/gF+tjW9lY6rKMOie/OP03rWYyGNrb1SreiPgcaBsZ2VPQkZ1uUgruKXpRql+LjbsogA==
-  /react-hyperscript/3.2.0:
+  /react-hyperscript/3.2.0_react@16.8.6:
+    dependencies:
+      react: 16.8.6
     dev: false
     peerDependencies:
       react: '>= 0.12.0 < 17.0.0'
     resolution:
       integrity: sha512-kf9VmxwCNqAImT3uDrCPJ8H5XdNzfSLps9x0qgJCH6OUCBiGAy1m9wHpedfr7GSuFqowhkNwv4ZuC40k3E/zRQ==
+  /react-is/16.12.0:
+    dev: false
+    resolution:
+      integrity: sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
   /react-is/16.8.6:
     resolution:
       integrity: sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
-  /react-redux/7.0.3:
+  /react-redux/7.2.0_react@16.8.6+redux@4.0.1:
     dependencies:
-      '@babel/runtime': 7.4.5
-      hoist-non-react-statics: 3.3.0
-      invariant: 2.2.4
+      '@babel/runtime': 7.8.4
+      hoist-non-react-statics: 3.3.2
       loose-envify: 1.4.0
       prop-types: 15.7.2
-      react-is: 16.8.6
+      react: 16.8.6
+      react-is: 16.12.0
+      redux: 4.0.1
     dev: false
     peerDependencies:
       react: ^16.8.3
       redux: ^2.0.0 || ^3.0.0 || ^4.0.0-0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
     resolution:
-      integrity: sha512-vYZA7ftOYlDk3NetitsI7fLjryt/widNl1SLXYvFenIpm7vjb4ryK0EeFrgn62usg5fYkyIAWNUPKnwWPevKLg==
+      integrity: sha512-EvCAZYGfOLqwV7gh849xy9/pt55rJXPwmYvI4lilPM5rUT/1NxuuN59ipdBksRVSvz0KInbPnp4IfoXJXCqiDA==
   /react-scripts/3.0.1:
     dependencies:
       '@babel/core': 7.4.3
@@ -8897,7 +8927,6 @@ packages:
       object-assign: 4.1.1
       prop-types: 15.7.2
       scheduler: 0.13.6
-    dev: false
     engines:
       node: '>=0.10.0'
     resolution:
@@ -9012,8 +9041,13 @@ packages:
     resolution:
       integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
   /regenerator-runtime/0.13.2:
+    dev: true
     resolution:
       integrity: sha512-S/TQAZJO+D3m9xeN1WTI8dLKBBiRgXBlTJvbWjCThHWZj9EvHK70Ff50/tYj2J/fvBY6JtFVwRuazHN2E7M9BA==
+  /regenerator-runtime/0.13.3:
+    dev: false
+    resolution:
+      integrity: sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
   /regenerator-transform/0.14.0:
     dependencies:
       private: 0.1.8
@@ -9366,7 +9400,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-    dev: false
     resolution:
       integrity: sha512-IWnObHt413ucAYKsD9J1QShUKkbKLQQHdxRyw73sw4FN26iWr3DY/H34xGPe4nmL1DwXyWmSWmMrA9TfQbE/XQ==
   /schema-utils/1.0.0:
@@ -10233,6 +10266,9 @@ packages:
       node: '>=6'
     peerDependencies:
       typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     resolution:
       integrity: sha512-f5Knjh7XCyRIzoC/z1Su1yLLRrPrFCgtUAh/9fCSP6NKbATwpOL1+idQVXQokK9GRFURn/jYPGPfegIctwunoA==
   /tslib/1.9.3:
@@ -11061,7 +11097,7 @@ specifiers:
   react-dom: ^16.8.6
   react-hyperscript: ^3.0.0
   react-hyperscript-helpers: ^2.0.0
-  react-redux: ^7.0.3
+  react-redux: ^7.2.0
   react-scripts: ^3.0.1
   redux: ^4.0.1
   un.js: ^0.5.9
