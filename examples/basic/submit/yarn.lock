@@ -10,7 +10,21 @@ mithril@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.1.tgz#0c98644c90503eec2187f66a851ba4053c4a5d66"
 
+un.js@^0.5.10:
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.5.10.tgz#ee4d3e1a4d81c55e98f8f5e073844ed38516ca1d"
+  integrity sha512-I/st2hgFnDd2MxOXd5VH5TS6KlTK3/SIsTknoIKsGueYLNlRm2nOspDoKX3UzN0Jdue2jb67sibcfAXz9KJ2fg==
+  dependencies:
+    un.js "^0.5.9"
+
 un.js@^0.5.9:
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.5.9.tgz#892076199843867e015760cf1491897d91e12fcf"
   integrity sha512-uS13MGvJlleNV/rBkyEH6igfvXQZH8PG6HPeVD6n9kKMFSHTpezqXaMyfDPc8aalshye6XDTsDwM/AY9ZinLYQ==
+
+un.js@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/un.js/-/un.js-0.6.0.tgz#9450277d71e9f2f2ff51d0e2fe5dcfb361d01ef2"
+  integrity sha512-S3b3emZ5amZFlIwC7vMFUOUBmGloUFw25OqgndBgpckhau9AodNgENrNIlDxqOQ8VWWLnYD55ny5nywVn0dtHQ==
+  dependencies:
+    un.js "^0.5.10"
