@@ -8,7 +8,7 @@
 
 # un.js
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/dmitriz/un.svg)](https://greenkeeper.io/)
+
 
 Unframework for Universal Uncomponents
 
