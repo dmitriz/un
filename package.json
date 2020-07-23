@@ -19,7 +19,7 @@
   "devDependencies": {
     "browserify": "16.5.1",
     "browserify-shim": "3.8.14",
-    "jasmine-core": "3.5.0",
+    "jasmine-core": "3.6.0",
     "karma": "5.0.9",
     "karma-browserify": "7.0.0",
     "karma-chrome-launcher": "3.1.0",
