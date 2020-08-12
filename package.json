@@ -23,7 +23,7 @@
     "karma": "5.0.9",
     "karma-browserify": "7.0.0",
     "karma-chrome-launcher": "3.1.0",
-    "karma-jasmine": "3.3.1",
+    "karma-jasmine": "4.0.1",
     "karma-source-map-support": "1.4.0",
     "watchify": "3.11.1"
   },
