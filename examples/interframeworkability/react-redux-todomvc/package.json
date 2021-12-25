@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.8.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hyperscript-helpers": "^2.0.0",
