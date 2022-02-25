@@ -6,10 +6,10 @@ hyperscript-helpers@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/hyperscript-helpers/-/hyperscript-helpers-3.0.3.tgz#583ac45214c9ea810991feb97bdb37fc3d12a1e8"
 
-mithril@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.7.tgz#505d7d77fe164ff16969de8f9b6eda42e0346cbe"
-  integrity sha512-1SAkGeVrIVvkUHlPHvR3pXdWzNfTzmS/fBAe+rC2ApEBfZFFc+idi8Qg/M5JoW/sZkIDXSfQYVgvENMIhBIVAg==
+mithril@^2.0.3:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/mithril/-/mithril-2.0.4.tgz#d125969d992b924c7185d24ff92d997e5c00116b"
+  integrity sha512-mgw+DMZlhMS4PpprF6dl7ZoeZq5GGcAuWnrg5e12MvaGauc4jzWsDZtVGRCktsiQczOEUr2K5teKbE5k44RlOg==
 
 un.js@^0.5.9:
   version "0.5.9"
