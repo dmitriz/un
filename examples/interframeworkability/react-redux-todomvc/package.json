@@ -13,7 +13,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hyperscript-helpers": "^2.0.0",
-    "react-redux": "^7.2.5",
+    "react-redux": "^7.2.6",
     "react-test-renderer": "^16.8.6",
     "redux": "^4.1.2",
     "todomvc-app-css": "^2.1.0"
