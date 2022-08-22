@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "hyperscript-helpers": "^3.0.3",
-    "mithril": "^2.0.3",
+    "mithril": "^2.2.2",
     "un.js": "^0.5.9"
   }
 }
